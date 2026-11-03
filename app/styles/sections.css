@@ -541,56 +541,6 @@
   }
 }
 
-/* Your data stays yours */
-.trust {
-  padding-top: 110px;
-  padding-bottom: 90px;
-}
-.trust__title {
-  margin-bottom: 44px;
-  text-align: center;
-}
-.trust__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-  gap: 18px;
-}
-.trust__card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 26px;
-  padding: 30px;
-}
-.trust__icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #eaf2ff, #cfe1ff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-.trust__heading {
-  margin: 0 0 8px;
-  font-size: 19px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
-.trust__text {
-  margin: 0;
-  color: var(--body);
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-@media (max-width: 640px) {
-  .trust {
-    padding-top: 64px;
-    padding-bottom: 64px;
-  }
-}
-
 /* Demo band */
 .demoband {
   padding-bottom: 100px;

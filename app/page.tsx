@@ -5,7 +5,6 @@ import { RevealObserver } from "@/components/RevealObserver";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Hero } from "@/components/sections/Hero";
 import { Closing } from "@/components/sections/Closing";
-import { DataTrust } from "@/components/sections/DataTrust";
 import { DemoBand } from "@/components/sections/DemoBand";
 import { Faq } from "@/components/sections/Faq";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -24,7 +23,6 @@ export default function Home() {
         <Problem />
         <Reads />
         <HowItWorks />
-        <DataTrust />
         <DemoBand />
         <Faq />
         <Team />
