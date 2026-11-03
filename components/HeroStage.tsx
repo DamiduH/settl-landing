@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 const SPACING = 24;
-const RADIUS = 170;
+const RADIUS = 230;
 const BASE = [185, 207, 242];
 const LIT = [47, 111, 224];
 
@@ -54,29 +54,29 @@ export function HeroStage({ children }: { children: React.ReactNode }) {
         light.y = target.y;
         light.ready = true;
       }
-      light.x += (target.x - light.x) * 0.045;
-      light.y += (target.y - light.y) * 0.045;
+      light.x += (target.x - light.x) * 0.07;
+      light.y += (target.y - light.y) * 0.07;
 
       ctx.clearRect(0, 0, width, height);
 
       // Soft glow under the lit area.
       const glow = ctx.createRadialGradient(light.x, light.y, 0, light.x, light.y, RADIUS * 1.6);
-      glow.addColorStop(0, "rgba(57,118,210,0.12)");
+      glow.addColorStop(0, "rgba(57,118,210,0.22)");
       glow.addColorStop(1, "rgba(57,118,210,0)");
       ctx.fillStyle = glow;
       ctx.fillRect(0, 0, width, height);
 
       // The whole grid drifts diagonally and ripples gently.
-      const ox = (s * 5) % SPACING;
-      const oy = (s * 3) % SPACING;
+      const ox = (s * 9) % SPACING;
+      const oy = (s * 5) % SPACING;
       const fadeStart = height * 0.5;
       const lit: [number, number, number, number][] = [];
 
       ctx.beginPath();
       for (let gy = -SPACING; gy < height + SPACING; gy += SPACING) {
         for (let gx = -SPACING; gx < width + SPACING; gx += SPACING) {
-          const x = gx + ox + Math.sin(gy * 0.018 + s * 0.6) * 2.2;
-          const y = gy + oy + Math.cos(gx * 0.016 + s * 0.5) * 2.2;
+          const x = gx + ox + Math.sin(gy * 0.018 + s * 0.8) * 3.2;
+          const y = gy + oy + Math.cos(gx * 0.016 + s * 0.7) * 3.2;
           if (y > height) continue;
           const fade = y < fadeStart ? 1 : Math.max(0, 1 - (y - fadeStart) / (height - fadeStart));
           if (fade <= 0) continue;
@@ -95,12 +95,12 @@ export function HeroStage({ children }: { children: React.ReactNode }) {
       ctx.fill();
 
       for (const [x, y, k, fade] of lit) {
-        const r = Math.round(BASE[0] + (LIT[0] - BASE[0]) * k * 0.75);
-        const g = Math.round(BASE[1] + (LIT[1] - BASE[1]) * k * 0.75);
-        const b = Math.round(BASE[2] + (LIT[2] - BASE[2]) * k * 0.75);
+        const r = Math.round(BASE[0] + (LIT[0] - BASE[0]) * k);
+        const g = Math.round(BASE[1] + (LIT[1] - BASE[1]) * k);
+        const b = Math.round(BASE[2] + (LIT[2] - BASE[2]) * k);
         ctx.fillStyle = `rgba(${r},${g},${b},${0.9 * fade})`;
         ctx.beginPath();
-        ctx.arc(x, y, 1.3 + k * 0.9, 0, Math.PI * 2);
+        ctx.arc(x, y, 1.3 + k * 1.7, 0, Math.PI * 2);
         ctx.fill();
       }
     };
