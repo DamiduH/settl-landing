@@ -5,26 +5,26 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import cropId from "@/public/images/crop-id.jpg";
 import cropScore from "@/public/images/crop-score.jpg";
 import cropSources from "@/public/images/crop-sources.jpg";
+import { SectionHead } from "../SectionHead";
 
-type Step = { t: string; d: string; img: StaticImageData; alt: string; maxHeight?: number };
+type Step = { t: string; d: string; img: StaticImageData; alt: string };
 
 const steps: Step[] = [
   {
-    t: "Connect where you earn.",
-    d: "Link your income streams, then connect your expense streams to show your reliability.",
+    t: "Connect",
+    d: "Link the platforms you get paid on and the bills you pay.",
     img: cropSources,
     alt: "Connected income sources in the Settl app",
-    maxHeight: 400,
   },
   {
-    t: "Get your Settl Score.",
-    d: "Your income and reliability become one score a lender can read.",
+    t: "Get your score",
+    d: "Settl turns them into one Settl Score.",
     img: cropScore,
     alt: "A Settl Score of 829 in the Settl app",
   },
   {
-    t: "Share it when you apply.",
-    d: "Give your Settl ID to a lender that accepts Settl scores. They see your score, never your transactions. The lender makes the decision.",
+    t: "Share your Settl ID",
+    d: "The lender sees your score, never your transactions.",
     img: cropId,
     alt: "The Settl ID a freelancer gives to lenders",
   },
@@ -54,55 +54,33 @@ export function HowItWorks() {
   return (
     <section id="how" className="how">
       <div className="container">
-        <div className="how__intro">
-          <div className="how__eyebrow rv">How it works</div>
-          <h2 className="how__title rv">Three steps. A few minutes.</h2>
-        </div>
-        <div className="how__row">
-          <div className="how__steps">
-            {steps.map((s, i) => {
-              const on = i === step;
-              return (
-                <button
-                  type="button"
-                  key={s.t}
-                  className={on ? "step on" : "step"}
-                  onClick={() => go(i)}
-                  aria-expanded={on}
-                >
-                  <div className="step__row">
-                    <span className="num">0{i + 1}</span>
-                    <div className="step__body">
-                      <div className="step__title">{s.t}</div>
-                      {on && (
-                        <>
-                          <p className="step__desc">{s.d}</p>
-                          <div className="step__track">
-                            <div className="bar" key={step} />
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </div>
+        <SectionHead eyebrow="How it works" title="Three steps. A few minutes." />
+
+        <ol className="how__grid">
+          {steps.map((s, i) => {
+            const on = i === step;
+            return (
+              <li key={s.t} className={on ? "hstep on rv" : "hstep rv"} onMouseEnter={() => go(i)}>
+                <button type="button" className="hstep__hit" onClick={() => go(i)} aria-pressed={on}>
+                  <span className="sr-only">Show step {i + 1}</span>
                 </button>
-              );
-            })}
-          </div>
-          <div className="how__visual">
-            <div className="stack">
-              {steps.map((s, i) => (
-                <div className={i === step ? "crop on" : "crop"} key={s.t} aria-hidden={i !== step}>
-                  <Image
-                    src={s.img}
-                    alt={s.alt}
-                    sizes="(max-width: 900px) 90vw, 640px"
-                    style={s.maxHeight ? { maxHeight: s.maxHeight } : undefined}
-                  />
+                <div className="hstep__shot">
+                  <Image src={s.img} alt={s.alt} sizes="(max-width: 900px) 90vw, 380px" />
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
+                <div className="hstep__body">
+                  <div className="hstep__top">
+                    <span className="hstep__num">{i + 1}</span>
+                    <h3 className="hstep__title">{s.t}</h3>
+                  </div>
+                  <p className="hstep__desc">{s.d}</p>
+                  <div className="hstep__track" aria-hidden="true">
+                    {on && <div className="bar" key={step} />}
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </section>
   );
