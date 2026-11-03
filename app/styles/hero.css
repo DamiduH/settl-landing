@@ -204,18 +204,19 @@
   overflow: hidden;
   pointer-events: none;
 }
+/* Soft radial gradients instead of filter: blur, so the drift stays on the compositor */
 .aurora i {
   position: absolute;
   border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.55;
+  opacity: 0.7;
+  will-change: transform;
 }
 .aurora i:nth-child(1) {
   width: 46vw;
   height: 46vw;
   left: -10vw;
   top: -14vw;
-  background: #abcfff;
+  background: radial-gradient(closest-side, #abcfff, rgba(255, 255, 255, 0));
   animation: drift1 22s ease-in-out infinite;
 }
 .aurora i:nth-child(2) {
@@ -223,7 +224,7 @@
   height: 40vw;
   right: -10vw;
   top: -6vw;
-  background: #c9deff;
+  background: radial-gradient(closest-side, #c9deff, rgba(255, 255, 255, 0));
   animation: drift2 26s ease-in-out infinite;
 }
 .aurora i:nth-child(3) {
@@ -231,7 +232,7 @@
   height: 30vw;
   left: 30vw;
   top: 20vw;
-  background: #dceaff;
+  background: radial-gradient(closest-side, #dceaff, rgba(255, 255, 255, 0));
   animation: drift3 18s ease-in-out infinite;
 }
 
