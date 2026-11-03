@@ -133,3 +133,40 @@ button {
   background: var(--blue);
   box-shadow: 0 0 0 4px rgba(57, 118, 210, 0.18);
 }
+
+/* Section heading: eyebrow, title, optional lead */
+.shead {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.shead--center {
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+}
+.shead__title {
+  margin: 0;
+  font-size: clamp(34px, 4.8vw, 58px);
+  line-height: 1.06;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+.shead__lead {
+  margin: 0;
+  max-width: 560px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--body);
+  text-wrap: pretty;
+}
+@media (max-width: 640px) {
+  .shead {
+    gap: 14px;
+  }
+  .shead__lead {
+    font-size: 17px;
+  }
+}
