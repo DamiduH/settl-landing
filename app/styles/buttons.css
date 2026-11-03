@@ -1,0 +1,66 @@
+/* Primary pill: live gradient with a white arrow chip */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 6px 8px 6px 26px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--grad-live);
+  background-size: 300% 100%;
+  animation: pan 8s ease-in-out infinite;
+  color: #fff;
+  font: 700 16px var(--font);
+  cursor: pointer;
+  box-shadow: 0 10px 30px -10px rgba(0, 79, 188, 0.6);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -10px rgba(0, 79, 188, 0.7);
+}
+.btn .ar {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+.btn:hover .ar {
+  transform: rotate(-45deg);
+}
+
+/* Secondary pill: white with a play chip */
+.btn2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 6px 24px 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font: 700 16px var(--font);
+  cursor: pointer;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.btn2:hover {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+.btn2 .pi {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--tint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
