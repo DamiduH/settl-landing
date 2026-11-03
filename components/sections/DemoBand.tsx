@@ -8,8 +8,7 @@ export function DemoBand() {
         <div className="band__copy">
           <h2 className="band__title">See Settl working.</h2>
           <p className="band__text">
-            Settl is live today. Book a 15-minute walkthrough and we&apos;ll take a profile from sign-up to score in
-            front of you.
+            Book a 15-minute walkthrough, from sign-up to score.
           </p>
         </div>
         <DemoButton className="band__cta" />

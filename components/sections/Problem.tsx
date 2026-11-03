@@ -1,4 +1,5 @@
 import { Check, Cross } from "../icons";
+import { SectionHead } from "../SectionHead";
 
 const asks = ["A payslip", "An employer letter", "EPF records"];
 const haves = [
@@ -10,13 +11,11 @@ const haves = [
 export function Problem() {
   return (
     <section className="problem container">
-      <div className="problem__intro">
-        <h2 className="problem__title rv">The loan form asks for a payslip. You don&apos;t have one.</h2>
-        <p className="problem__lead rv">
-          Your clients are abroad and money comes in every month. But your income doesn&apos;t fit the boxes, so it
-          doesn&apos;t count.
-        </p>
-      </div>
+      <SectionHead
+        eyebrow="The problem"
+        title="The loan form asks for a payslip. You don't have one."
+        lead="Your income is real. It just doesn't fit the boxes."
+      />
       <div className="problem__grid">
         <div className="problem__card rv">
           <div className="problem__label">The form asks for</div>

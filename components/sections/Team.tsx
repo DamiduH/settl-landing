@@ -1,3 +1,5 @@
+import { SectionHead } from "../SectionHead";
+
 const team = [
   { n: "Randesh Daluwatte", r: "Strategy and Governance" },
   { n: "Damidu Herath", r: "Business and Market Research" },
@@ -7,13 +9,11 @@ const team = [
 export function Team() {
   return (
     <section id="team" className="team container">
-      <div className="team__intro">
-        <h2 className="section-title rv">The people behind Settl</h2>
-        <p className="section-lead team__lead rv">
-          Settl started with a problem one of us ran into: real freelance income that a bank couldn&apos;t see.
-          We&apos;re building the score we wished existed.
-        </p>
-      </div>
+      <SectionHead
+        eyebrow="Team"
+        title="The people behind Settl"
+        lead="We're building the score we wished existed."
+      />
       <div className="team__grid">
         {team.map((m) => (
           <div className="team__card rv" key={m.n}>
