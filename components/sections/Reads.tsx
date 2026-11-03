@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { platforms } from "../platforms";
+import { SectionHead } from "../SectionHead";
 
 const bills = [
   { name: "Electricity", icon: "M13 2L4 14h7l-1 8 9-12h-7z" },
@@ -7,62 +8,95 @@ const bills = [
   { name: "Phone and internet", icon: "M2 9a15 15 0 0120 0M5.5 12.5a10 10 0 0113 0M9 16a5 5 0 016 0M12 19.5h.01" },
 ];
 
+const BARS = 20;
+const FILLED = 18;
+
 export function Reads() {
   return (
     <section id="reads" className="reads container">
-      <div className="reads__intro">
-        <h2 className="section-title rv">What Settl reads</h2>
-        <p className="section-lead rv">
-          Your income from the platforms you work on. Your reliability from the bills you pay.
-        </p>
-      </div>
-      <div className="reads__row">
-        <div className="reads__panel reads__panel--income rv">
-          <div className="reads__label">Income platforms</div>
-          <div className="reads__grid">
-            {platforms.map((p) =>
-              p.wordmark ? (
-                <div className="src src--mark" key={p.name}>
-                  <Image src={p.logo} alt={p.name} width={56} height={56} className="src__wordmark" />
-                </div>
-              ) : (
-                <div className="src" key={p.name}>
-                  <Image src={p.logo} alt="" width={30} height={30} className="src__logo" />
-                  <span style={{ color: p.color }}>{p.name}</span>
-                </div>
-              ),
-            )}
+      <SectionHead eyebrow="What Settl reads" title="Your income and your bills. One score." />
+
+      <div className="flow">
+        <div className="flow__inputs">
+          <div className="flow__card rv">
+            <div className="flow__head">
+              <span className="flow__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#004FBC" strokeWidth="2.2" aria-hidden="true">
+                  <path d="M3 17l6-6 4 4 8-8M15 7h6v6" />
+                </svg>
+              </span>
+              <div>
+                <h3 className="flow__title">Income</h3>
+                <p className="flow__sub">Where you get paid</p>
+              </div>
+            </div>
+            <ul className="flow__logos">
+              {platforms.map((p) => (
+                <li key={p.name} className="flow__logo">
+                  {p.wordmark ? (
+                    <Image src={p.logo} alt={p.name} width={52} height={52} />
+                  ) : (
+                    <>
+                      <Image src={p.logo} alt="" width={24} height={24} />
+                      <span style={{ color: p.color }}>{p.name}</span>
+                    </>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-        <div className="reads__panel reads__panel--bills rv">
-          <div className="reads__label">Bills</div>
-          <div className="reads__stack">
-            {bills.map((b) => (
-              <div className="src src--bill" key={b.name}>
-                <span className="src__icon">
+
+          <div className="flow__plus" aria-hidden="true">
+            +
+          </div>
+
+          <div className="flow__card rv">
+            <div className="flow__head">
+              <span className="flow__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#004FBC" strokeWidth="2.2" aria-hidden="true">
+                  <path d="M4 12l5 5L20 6" />
+                </svg>
+              </span>
+              <div>
+                <h3 className="flow__title">Reliability</h3>
+                <p className="flow__sub">Bills you pay on time</p>
+              </div>
+            </div>
+            <ul className="flow__bills">
+              {bills.map((b) => (
+                <li key={b.name} className="flow__bill">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#004FBC" strokeWidth="2.2" aria-hidden="true">
                     <path d={b.icon} />
                   </svg>
-                </span>
-                {b.name}
-              </div>
-            ))}
+                  {b.name}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <div className="reads__panel reads__panel--score rv live">
-          <svg width="100%" height="60" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
-            <path
-              className="flow"
-              d="M0 10 C 80 10 100 30 200 30 M0 50 C 80 50 100 30 200 30"
-              fill="none"
-              stroke="#ABCFFF"
-              strokeWidth="2"
-            />
+
+        <div className="flow__link" aria-hidden="true">
+          <svg className="flow__wide" viewBox="0 0 120 400" preserveAspectRatio="none">
+            <path className="flow" d="M0 100 C 60 100 60 200 116 200 M0 300 C 60 300 60 200 116 200" fill="none" stroke="#3976D2" strokeWidth="2" vectorEffect="non-scaling-stroke" />
           </svg>
-          <div>
-            <div className="reads__together">Together they become</div>
-            <div className="reads__score">One Settl Score</div>
+          <svg className="flow__narrow" width="24" height="40" viewBox="0 0 24 40">
+            <path className="flow" d="M12 0 V 34" fill="none" stroke="#3976D2" strokeWidth="2" />
+            <path d="M5 28l7 8 7-8" fill="none" stroke="#3976D2" strokeWidth="2" />
+          </svg>
+        </div>
+
+        <div className="flow__score live rv">
+          <div className="flow__scorelabel">Your Settl Score</div>
+          <div className="flow__scorerow">
+            <span className="flow__number">829</span>
+            <span className="flow__pill">Excellent</span>
           </div>
+          <div className="flow__meter" aria-hidden="true">
+            {Array.from({ length: BARS }, (_, i) => (
+              <span key={i} className={i < FILLED ? "on" : undefined} />
+            ))}
+          </div>
+          <p className="flow__caption">One score a lender can read.</p>
         </div>
       </div>
     </section>
