@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Check, Cross } from "./icons";
 import { Logo } from "./Logo";
 import { useModal } from "./ModalProvider";
+import { DemoForm } from "./forms/DemoForm";
 import { WaitlistForm } from "./forms/WaitlistForm";
 
 const done = {
@@ -103,6 +104,12 @@ export function Modal() {
               <>
                 <p className="modal__sub">Just your details. No account access needed.</p>
                 <WaitlistForm onDone={() => setSubmitted(true)} />
+              </>
+            )}
+            {modal === "demo" && (
+              <>
+                <p className="modal__sub">15 minutes, from sign-up to score.</p>
+                <DemoForm onDone={() => setSubmitted(true)} />
               </>
             )}
           </>

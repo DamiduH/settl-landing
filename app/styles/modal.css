@@ -176,3 +176,9 @@
     padding-right: 0;
   }
 }
+
+.mform__submit:disabled {
+  cursor: progress;
+  opacity: 0.8;
+  transform: none;
+}
