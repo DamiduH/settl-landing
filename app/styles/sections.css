@@ -143,3 +143,108 @@
     padding: 24px 22px 32px;
   }
 }
+
+/* Problem */
+.problem {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.problem__intro {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.problem__title {
+  margin: 0;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+.problem__lead {
+  margin: 22px auto 0;
+  max-width: 600px;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--body);
+}
+.problem__grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 20px;
+}
+.problem__card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 36px;
+}
+.problem__card--have {
+  background: linear-gradient(135deg, #3976d2, #004fc5, #062656, #004fc5, #3976d2);
+  border: 0;
+  color: #fff;
+  box-shadow: 0 30px 60px -30px rgba(0, 79, 188, 0.6);
+}
+.problem__label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.problem__card--have .problem__label {
+  color: var(--pale);
+}
+.problem__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.problem__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  font-size: 20px;
+}
+.problem__item--ask {
+  font-weight: 600;
+  color: var(--strike);
+}
+.problem__item--have {
+  font-weight: 700;
+}
+.problem__mark {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.problem__item--have .problem__mark {
+  background: rgba(255, 255, 255, 0.18);
+}
+.problem__foot {
+  margin-top: 18px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--mist);
+}
+
+@media (max-width: 640px) {
+  .problem {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  .problem__card {
+    padding: 28px 24px;
+  }
+  .problem__item {
+    font-size: 18px;
+  }
+}
