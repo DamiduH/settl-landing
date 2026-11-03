@@ -10,25 +10,22 @@ export function Hero() {
       <Header />
 
       <div className="herotext">
+        <p className="eyebrow u" style={{ animationDelay: ".2s" }}>
+          <span className="eyebrow__dot" aria-hidden="true" />
+          The credit score for freelancers
+        </p>
         <h1>
           <span className="u" style={{ display: "block", animationDelay: ".3s" }}>
             Your work adds up.
           </span>
-          <span className="u" style={{ display: "block", animationDelay: ".5s", paddingBottom: ".08em" }}>
+          <span className="u" style={{ display: "block", animationDelay: ".45s" }}>
             <span className="grad">Settl makes it count.</span>
           </span>
         </h1>
-        <p className="herotext__sub u" style={{ animationDelay: ".7s" }}>
-          Settl turns your alternative income and the reliability you&apos;ve already shown into a credit
-          score lenders can read. No payslip needed.
-        </p>
-        <div className="herotext__ctas u" style={{ animationDelay: ".85s" }}>
-          <WaitlistButton />
-          <DemoButton />
+        <div className="herotext__ctas u" style={{ animationDelay: ".65s" }}>
+          <WaitlistButton className="btn--lg" />
+          <DemoButton className="btn--lg" />
         </div>
-        <p className="herotext__note u" style={{ animationDelay: "1s" }}>
-          Free for freelancers. Settl is a credit score, not a lender.
-        </p>
       </div>
 
       <MacWindow />

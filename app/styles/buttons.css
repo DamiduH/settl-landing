@@ -64,3 +64,20 @@
   align-items: center;
   justify-content: center;
 }
+
+/* Larger hero buttons */
+.btn--lg {
+  min-height: 60px;
+  font-size: 17px;
+}
+.btn.btn--lg {
+  padding: 6px 8px 6px 30px;
+}
+.btn.btn--lg .ar,
+.btn2.btn--lg .pi {
+  width: 46px;
+  height: 46px;
+}
+.btn2.btn--lg {
+  padding: 6px 30px 6px 8px;
+}
