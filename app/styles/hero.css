@@ -331,3 +331,49 @@
     border-radius: 16px;
   }
 }
+
+/* Platform logo strip */
+.platforms {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 64px auto 0;
+  padding: 0 20px;
+  text-align: center;
+}
+.platforms__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.platforms__row {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 48px;
+  justify-content: center;
+  align-items: center;
+}
+.lg {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  opacity: 0.9;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.lg:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-bottom: 28px;
+  }
+  .lg {
+    font-size: 18px;
+  }
+}
