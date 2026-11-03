@@ -33,7 +33,10 @@ export function Recognition() {
   return (
     <section className="recog container" aria-roledescription="carousel" aria-label="Recognition">
       <div className="recog__head">
-        <h2 className="recog__title rv">Recognised by Sri Lanka&apos;s startup community</h2>
+        <div className="shead shead--left">
+          <p className="eyebrow rv">Recognition</p>
+          <h2 className="shead__title rv">Recognised by Sri Lanka&apos;s startup community</h2>
+        </div>
         <div className="recog__nav">
           <button type="button" className="recog__arrow" onClick={() => go(slide - 1)} aria-label="Previous">
             <ArrowLeft />

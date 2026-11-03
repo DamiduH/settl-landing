@@ -87,13 +87,6 @@
   animation: flow 1s linear infinite;
 }
 
-.lift {
-  transition: transform 0.35s var(--ease-out), box-shadow 0.35s;
-}
-.lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 26px 50px -30px rgba(6, 38, 86, 0.35);
-}
 
 /* Scroll reveal: hidden until RevealObserver marks the element as in view */
 .rv-ready .rv:not(.in) {

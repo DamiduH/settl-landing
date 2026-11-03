@@ -1,3 +1,5 @@
+import { SectionHead } from "../SectionHead";
+
 type Qa = { q: string; a: string };
 
 const left: Qa[] = [
@@ -45,7 +47,7 @@ function Column({ items }: { items: Qa[] }) {
 export function Faq() {
   return (
     <section id="faq" className="faq container">
-      <h2 className="section-title faq__title rv">Questions</h2>
+      <SectionHead eyebrow="FAQ" title="Questions" />
       <div className="faq__grid">
         <Column items={left} />
         <Column items={right} />

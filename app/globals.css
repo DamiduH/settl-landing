@@ -93,19 +93,7 @@ button {
   padding-right: 20px;
 }
 
-.section-title {
-  margin: 0;
-  font-size: clamp(36px, 5vw, 60px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-}
 
-.section-lead {
-  margin: 16px 0 0;
-  font-size: 18px;
-  line-height: 1.6;
-  color: var(--body);
-}
 
 .ph {
   background: linear-gradient(135deg, #e3edff, #f3f7ff);
