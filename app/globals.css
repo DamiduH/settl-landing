@@ -142,11 +142,11 @@ button {
 }
 /* Highlighted keyword: a soft marker swept in behind the word */
 .hl {
-  color: inherit;
-  padding: 0 0.12em;
-  margin: 0 -0.04em;
-  border-radius: 0.18em;
-  background: linear-gradient(120deg, #3976d2, #2f6fe0) no-repeat 0 88% / 100% 38%;
+  color: #fff;
+  padding: 0 0.16em 0.04em;
+  margin: 0 0.02em;
+  border-radius: 0.22em;
+  background: linear-gradient(120deg, #3976d2, #2f6fe0);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
