@@ -15,6 +15,10 @@ export function RevealObserver() {
     const items = Array.from(document.querySelectorAll<HTMLElement>(".rv"));
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    if (reduce) {
+      document.querySelector<SVGSVGElement>("svg:has(#sgA)")?.pauseAnimations();
+    }
+
     if (reduce || !("IntersectionObserver" in window)) {
       items.forEach((el) => el.classList.add("in"));
       return;

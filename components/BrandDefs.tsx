@@ -3,6 +3,7 @@
  * traced wordmark. Rendered once per page and referenced by every <Logo />.
  */
 export function BrandDefs() {
+  // The SVG gradient sweep is paused by RevealObserver when reduced motion is on.
   return (
     <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden="true" focusable="false">
       <defs>

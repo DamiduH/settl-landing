@@ -78,3 +78,19 @@
 .rv-ready .rv:not(.in) {
   opacity: 0;
 }
+
+/* Respect reduced motion: no animation, everything visible straight away */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .u,
+  .mac,
+  .float__card {
+    opacity: 1;
+  }
+}
