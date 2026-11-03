@@ -14,7 +14,7 @@ const FILLED = 18;
 export function Reads() {
   return (
     <section id="reads" className="reads container">
-      <SectionHead eyebrow="What Settl reads" title="Your income and your bills. One score." />
+      <SectionHead lines={["Your income and your bills.", <span className="grad" key="g">One score.</span>]} />
 
       <div className="rflow">
         <div className="flow__inputs">

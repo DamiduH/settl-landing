@@ -12,8 +12,13 @@ export function Problem() {
   return (
     <section className="problem container">
       <SectionHead
-        eyebrow="The problem"
-        title="The loan form asks for a payslip. You don't have one."
+        tone="dark"
+        lines={[
+          <>
+            The loan form asks for a <mark className="hl">payslip</mark>.
+          </>,
+          <span className="shead__soft" key="s">You don&apos;t have one.</span>,
+        ]}
         lead="Your income is real. It just doesn't fit the boxes."
       />
       <div className="problem__grid">

@@ -54,7 +54,7 @@ export function HowItWorks() {
   return (
     <section id="how" className="how">
       <div className="container">
-        <SectionHead eyebrow="How it works" title="Three steps. A few minutes." />
+        <SectionHead lines={["Three steps.", <span className="grad" key="g">A few minutes.</span>]} />
 
         <ol className="how__grid">
           {steps.map((s, i) => {

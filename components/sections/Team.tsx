@@ -10,8 +10,7 @@ export function Team() {
   return (
     <section id="team" className="team container">
       <SectionHead
-        eyebrow="Team"
-        title="The people behind Settl"
+        lines={[<>The people behind <span className="grad">Settl</span></>]}
         lead="We're building the score we wished existed."
       />
       <div className="team__grid">

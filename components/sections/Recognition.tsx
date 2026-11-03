@@ -34,8 +34,11 @@ export function Recognition() {
     <section className="recog container" aria-roledescription="carousel" aria-label="Recognition">
       <div className="recog__head">
         <div className="shead shead--left">
-          <p className="eyebrow rv">Recognition</p>
-          <h2 className="shead__title rv">Recognised by Sri Lanka&apos;s startup community</h2>
+          <h2 className="shead__title rv">
+            <span className="shead__line">
+              Recognised by Sri Lanka&apos;s <span className="grad">startup community</span>
+            </span>
+          </h2>
         </div>
         <div className="recog__nav">
           <button type="button" className="recog__arrow" onClick={() => go(slide - 1)} aria-label="Previous">
