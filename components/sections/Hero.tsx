@@ -10,10 +10,6 @@ export function Hero() {
       <Header />
 
       <div className="herotext">
-        <p className="eyebrow u" style={{ animationDelay: ".2s" }}>
-          <span className="eyebrow__dot" aria-hidden="true" />
-          The credit score for freelancers
-        </p>
         <h1>
           <span className="u" style={{ display: "block", animationDelay: ".3s" }}>
             Your work adds up.

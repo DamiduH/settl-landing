@@ -90,11 +90,8 @@
   z-index: 2;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 88px 20px 0;
+  padding: 104px 20px 0;
   text-align: center;
-}
-.herotext .eyebrow {
-  margin-bottom: 28px;
 }
 .herotext h1 {
   margin: 0;
@@ -119,10 +116,7 @@
 
 @media (max-width: 640px) {
   .herotext {
-    padding-top: 52px;
-  }
-  .herotext .eyebrow {
-    margin-bottom: 20px;
+    padding-top: 64px;
   }
   .herotext h1 {
     font-size: clamp(36px, 10.6vw, 46px);
