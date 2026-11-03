@@ -105,6 +105,6 @@
   .u,
   .mac,
   .float__card {
-    opacity: 1;
+    opacity: 1 !important;
   }
 }
