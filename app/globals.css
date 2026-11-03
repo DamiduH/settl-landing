@@ -113,7 +113,7 @@ button {
   max-width: 760px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 }
 .shead--left {
   align-items: flex-start;
