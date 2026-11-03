@@ -1,0 +1,145 @@
+/* Recognition slideshow */
+.recog {
+  padding-top: 110px;
+  padding-bottom: 40px;
+}
+.recog__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.recog__title {
+  margin: 0;
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  max-width: 560px;
+}
+.recog__nav {
+  display: flex;
+  gap: 10px;
+}
+.recog__arrow {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.recog__arrow--next {
+  border: 0;
+  background: linear-gradient(135deg, #3976d2, #004fc5, #062656, #004fc5, #3976d2);
+}
+.recog__frame {
+  border-radius: 32px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+}
+.slides {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.7, 0, 0.2, 1);
+}
+.slide {
+  flex: 0 0 100%;
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+.awph {
+  flex: 1 1 min(100%, 420px);
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 24px;
+  margin: 16px;
+}
+.awtext {
+  flex: 1 1 min(100%, 380px);
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+.awtext__meta {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  font-size: 15px;
+}
+.awtext__title {
+  font-weight: 800;
+  color: var(--brand);
+}
+.awtext__date {
+  font-weight: 600;
+  color: var(--faint);
+}
+.awtext__tag {
+  margin: 0;
+  font-size: clamp(32px, 3.6vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+.awtext__line {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--body);
+}
+.recog__dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 22px;
+}
+.recog__dot {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.recog__dot span {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  background: #c6d6f2;
+  transition: all 0.4s;
+}
+.recog__dot span.on {
+  width: 28px;
+  background: var(--brand);
+}
+
+@media (max-width: 640px) {
+  .recog {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  .awph {
+    min-height: 220px;
+    margin: 10px;
+  }
+  .awtext {
+    padding: 24px 22px 32px;
+  }
+}
