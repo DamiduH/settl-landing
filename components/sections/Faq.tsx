@@ -46,11 +46,15 @@ function Column({ items }: { items: Qa[] }) {
 
 export function Faq() {
   return (
-    <section id="faq" className="faq container">
-      <SectionHead lines={[<>Questions, <span className="grad">answered.</span></>]} />
-      <div className="faq__grid">
-        <Column items={left} />
-        <Column items={right} />
+    <section id="faq" className="faq">
+      <div className="faq__band">
+        <div className="container">
+          <SectionHead lines={[<>Questions, <span className="grad">answered.</span></>]} />
+          <div className="faq__grid">
+            <Column items={left} />
+            <Column items={right} />
+          </div>
+        </div>
       </div>
     </section>
   );

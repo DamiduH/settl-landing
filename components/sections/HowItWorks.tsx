@@ -71,7 +71,7 @@ function TrackVisual() {
           <line key={y} x1="0" x2="300" y1={y} y2={y} stroke="#DCE7FA" strokeWidth="1" vectorEffect="non-scaling-stroke" />
         ))}
         <path className="vis__area" d={area} fill="url(#howArea)" />
-        <path className="vis__line" d={line} pathLength={1} fill="none" stroke="#004FC5" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+        <path className="vis__line" d={line} pathLength={1} fill="none" stroke="#004FC5" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" />
       </svg>
       <div className="vis__months" aria-hidden="true">
         {["May", "Jun", "Jul", "Aug", "Sep", "Oct"].map((m) => (
