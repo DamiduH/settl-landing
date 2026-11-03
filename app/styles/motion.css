@@ -41,9 +41,11 @@
   animation: up 0.9s var(--ease-out) forwards;
 }
 
-/* Shimmering gradient text */
+/* Shimmering gradient text. Inline-block so the gradient spans the whole
+   phrase, and no near-black stop so it never looks like it cuts off. */
 .grad {
-  background: linear-gradient(90deg, #3976d2, #004fc5, #062656, #004fc5, #3976d2);
+  display: inline-block;
+  background: linear-gradient(90deg, #3976d2, #004fc5, #1e54b8, #004fc5, #3976d2);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
