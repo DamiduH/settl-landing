@@ -138,31 +138,14 @@
   }
 }
 
-/* Interactive dot field */
-@property --mx {
-  syntax: "<length-percentage>";
-  inherits: true;
-  initial-value: 50%;
+/* Dot field (drawn on a canvas by HeroStage) */
+.hero__field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
-@property --my {
-  syntax: "<length-percentage>";
-  inherits: true;
-  initial-value: 40%;
-}
-@keyframes idle {
-  0% { --mx: 20%; --my: 30%; }
-  25% { --mx: 70%; --my: 20%; }
-  50% { --mx: 85%; --my: 60%; }
-  75% { --mx: 35%; --my: 70%; }
-  100% { --mx: 20%; --my: 30%; }
-}
-.hero {
-  --mx: 50%;
-  --my: 40%;
-}
-.hero.idle {
-  animation: idle 14s ease-in-out infinite;
-}
+
+/* Static dot grid, used behind the closing section */
 .dots {
   position: absolute;
   inset: 0;
@@ -170,25 +153,6 @@
   background-size: 22px 22px;
   -webkit-mask-image: linear-gradient(#000 55%, transparent);
   mask-image: linear-gradient(#000 55%, transparent);
-}
-.lit {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(#2f6fe0 2.6px, transparent 2.9px);
-  background-size: 22px 22px;
-  -webkit-mask-image: radial-gradient(circle 200px at var(--mx) var(--my), #000 0%, rgba(0, 0, 0, 0.5) 45%, transparent 75%);
-  mask-image: radial-gradient(circle 200px at var(--mx) var(--my), #000 0%, rgba(0, 0, 0, 0.5) 45%, transparent 75%);
-}
-.glow {
-  position: absolute;
-  left: var(--mx);
-  top: var(--my);
-  width: 520px;
-  height: 520px;
-  margin: -260px 0 0 -260px;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(57, 118, 210, 0.22), transparent);
-  pointer-events: none;
 }
 
 /* Drifting aurora blobs */
