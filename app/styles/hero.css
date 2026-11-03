@@ -88,20 +88,35 @@
 .herotext {
   position: relative;
   z-index: 2;
-  max-width: 1120px;
+  max-width: 1260px;
   margin: 0 auto;
   padding: 104px 20px 0;
   text-align: center;
 }
 .herotext h1 {
   margin: 0;
-  font-size: clamp(42px, 7.2vw, 100px);
+  font-size: clamp(40px, 7.4vw, 108px);
   line-height: 1;
   font-weight: 800;
   letter-spacing: -0.05em;
 }
 .herotext h1 span {
   text-wrap: balance;
+}
+/* "Your work adds up." sits a step below the main line */
+.herotext__lead {
+  display: block;
+  font-size: 0.66em;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.12em;
+}
+.herotext__main {
+  display: block;
+}
+@media (min-width: 768px) {
+  .herotext h1 span {
+    white-space: nowrap;
+  }
 }
 .herotext h1 .grad {
   padding-bottom: 0.1em;
@@ -119,7 +134,7 @@
     padding-top: 64px;
   }
   .herotext h1 {
-    font-size: clamp(36px, 10.6vw, 46px);
+    font-size: clamp(40px, 12vw, 52px);
     letter-spacing: -0.045em;
   }
   .herotext__ctas {

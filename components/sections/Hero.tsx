@@ -11,10 +11,10 @@ export function Hero() {
 
       <div className="herotext">
         <h1>
-          <span className="u" style={{ display: "block", animationDelay: ".3s" }}>
+          <span className="herotext__lead u" style={{ animationDelay: ".3s" }}>
             Your work adds up.
           </span>
-          <span className="u" style={{ display: "block", animationDelay: ".45s" }}>
+          <span className="herotext__main u" style={{ animationDelay: ".45s" }}>
             <span className="grad">Settl makes it count.</span>
           </span>
         </h1>
