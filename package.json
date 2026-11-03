@@ -21,5 +21,9 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.5",
     "typescript": "^5"
+  },
+  "description": "Settl landing page",
+  "engines": {
+    "node": ">=20.9"
   }
 }
