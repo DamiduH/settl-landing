@@ -1,0 +1,76 @@
+.hero {
+  position: relative;
+  background: linear-gradient(180deg, #dceaff 0%, #eef5ff 45%, #f7faff 100%);
+  padding-bottom: 40px;
+}
+
+/* Header and navigation */
+.site-header {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px 0;
+}
+.site-header__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 6px 0;
+}
+.site-header__home {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+.navlinks {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.navl {
+  position: relative;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 14px;
+  transition: color 0.2s;
+}
+.navl::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 6px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #3976d2, #004fc5);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-out);
+}
+.navl:hover {
+  color: var(--brand);
+}
+.navl:hover::after {
+  transform: scaleX(1);
+}
+.btn.navcta {
+  min-height: 46px;
+  padding: 4px 6px 4px 20px;
+  font-size: 15px;
+}
+
+@media (max-width: 640px) {
+  .navlinks {
+    display: none;
+  }
+  .btn.navcta {
+    min-height: 44px;
+    font-size: 14px;
+    padding: 3px 4px 3px 16px;
+  }
+}

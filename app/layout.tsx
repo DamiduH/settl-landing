@@ -4,6 +4,7 @@ import "./globals.css";
 import "./styles/motion.css";
 import "./styles/logo.css";
 import "./styles/buttons.css";
+import "./styles/hero.css";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
