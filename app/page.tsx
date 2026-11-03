@@ -2,6 +2,7 @@ import { BrandDefs } from "@/components/BrandDefs";
 import { Modal } from "@/components/Modal";
 import { ModalProvider } from "@/components/ModalProvider";
 import { RevealObserver } from "@/components/RevealObserver";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { Hero } from "@/components/sections/Hero";
 import { Closing } from "@/components/sections/Closing";
 import { DataTrust } from "@/components/sections/DataTrust";
@@ -31,6 +32,7 @@ export default function Home() {
       </div>
       <Modal />
       <RevealObserver />
+      <SmoothScroll />
     </ModalProvider>
   );
 }
