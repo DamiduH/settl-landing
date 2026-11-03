@@ -87,7 +87,7 @@
 }
 .awtext__date {
   font-weight: 600;
-  color: var(--faint);
+  color: var(--muted);
 }
 .awtext__tag {
   margin: 0;
