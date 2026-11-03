@@ -327,6 +327,7 @@
   text-align: center;
 }
 .platforms__label {
+  text-wrap: balance;
   margin: 0 0 18px;
   padding: 0 20px;
   font-size: 15px;
