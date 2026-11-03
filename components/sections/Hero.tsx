@@ -24,8 +24,8 @@ export function Hero() {
         </div>
       </div>
 
-      <MacWindow />
       <PlatformStrip />
+      <MacWindow />
     </HeroStage>
   );
 }
