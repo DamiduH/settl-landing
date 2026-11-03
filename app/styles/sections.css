@@ -731,3 +731,71 @@
     font-size: 16px;
   }
 }
+
+/* Team */
+.team {
+  padding-top: 20px;
+  padding-bottom: 110px;
+}
+.team__intro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 48px;
+}
+.team__lead {
+  margin-top: 18px;
+}
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 20px;
+}
+.team__card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 14px;
+}
+.team__photo {
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 600;
+}
+.team__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 10px 8px;
+}
+.team__name {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+.team__role {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.team__link {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--tint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .team {
+    padding-bottom: 64px;
+  }
+}

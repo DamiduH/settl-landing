@@ -9,6 +9,7 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Problem } from "@/components/sections/Problem";
 import { Reads } from "@/components/sections/Reads";
 import { Recognition } from "@/components/sections/Recognition";
+import { Team } from "@/components/sections/Team";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
         <DataTrust />
         <DemoBand />
         <Faq />
+        <Team />
       </div>
       <RevealObserver />
     </ModalProvider>
