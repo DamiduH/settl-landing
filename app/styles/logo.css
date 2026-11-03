@@ -1,0 +1,43 @@
+@keyframes build {
+  from { opacity: 0; transform: translateX(-80%) scaleY(0.2); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes beat {
+  0%, 24%, 100% { transform: none; }
+  10% { transform: scaleY(1.16) translateX(4%); }
+}
+@keyframes spin {
+  0% { transform: none; }
+  50% { transform: scaleX(-1) scaleY(1.1); }
+  100% { transform: none; }
+}
+@keyframes wmIn {
+  from { opacity: 0; transform: translateX(-4%); }
+  to { opacity: 1; transform: none; }
+}
+
+.slogo {
+  overflow: visible;
+}
+.slogo .b {
+  transform-box: fill-box;
+  transform-origin: 0% 50%;
+  animation: build 0.9s var(--ease-out) both, beat 4s ease-in-out infinite;
+}
+.slogo .b1 { animation-delay: 0.05s, 1.4s; }
+.slogo .b2 { animation-delay: 0.18s, 1.55s; }
+.slogo .b3 { animation-delay: 0.31s, 1.7s; }
+.slogo .wm {
+  fill: var(--ink);
+  animation: wmIn 0.8s 0.35s var(--ease-out) both;
+}
+.slogo:hover .b {
+  transform-origin: 50% 50%;
+  animation: spin 0.9s cubic-bezier(0.6, 0, 0.2, 1) both;
+}
+.slogo:hover .b1 { animation-delay: 0s; }
+.slogo:hover .b2 { animation-delay: 0.1s; }
+.slogo:hover .b3 { animation-delay: 0.2s; }
+.slogo.light .wm {
+  fill: #fff;
+}
