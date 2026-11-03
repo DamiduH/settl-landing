@@ -4,6 +4,7 @@ import { RevealObserver } from "@/components/RevealObserver";
 import { Hero } from "@/components/sections/Hero";
 import { DataTrust } from "@/components/sections/DataTrust";
 import { DemoBand } from "@/components/sections/DemoBand";
+import { Faq } from "@/components/sections/Faq";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Problem } from "@/components/sections/Problem";
 import { Reads } from "@/components/sections/Reads";
@@ -21,6 +22,7 @@ export default function Home() {
         <HowItWorks />
         <DataTrust />
         <DemoBand />
+        <Faq />
       </div>
       <RevealObserver />
     </ModalProvider>
