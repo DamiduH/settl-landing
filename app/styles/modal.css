@@ -1,0 +1,178 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 27, 61, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 50;
+  animation: fadein 0.25s;
+}
+.modal__dialog {
+  background: #fff;
+  border-radius: 32px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 92vh;
+  max-height: 92dvh;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 40px 36px;
+  position: relative;
+  box-shadow: 0 40px 100px -30px rgba(6, 38, 86, 0.5);
+  animation: pop 0.45s var(--ease-out);
+}
+.modal__logo {
+  margin-bottom: 22px;
+}
+.modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--panel);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal__title {
+  margin: 0 0 6px;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.modal__sub {
+  margin: 0 0 26px;
+  color: var(--body);
+}
+.modal__done {
+  text-align: center;
+  padding: 20px 0;
+}
+.modal__done .modal__title {
+  margin: 0;
+}
+.modal__tick {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3976d2, #004fc5, #062656, #004fc5, #3976d2);
+  background-size: 250% 250%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pop 0.5s, pan 8s ease-in-out infinite;
+}
+.modal__donetext {
+  margin: 12px 0 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--body);
+}
+
+/* Modal forms */
+.mform {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.mform label {
+  font: 600 13px var(--font);
+  color: var(--body);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.mform input,
+.mform select,
+.mform textarea {
+  font: 500 16px var(--font);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 13px 16px;
+  min-height: 48px;
+  background: var(--bg);
+  color: var(--ink);
+  width: 100%;
+}
+.mform textarea {
+  resize: vertical;
+}
+.mform input:focus,
+.mform select:focus,
+.mform textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(57, 118, 210, 0.18);
+}
+.mform__set {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.mform__set legend {
+  font: 600 13px var(--font);
+  color: var(--body);
+  margin-bottom: 8px;
+  padding: 0;
+}
+.mform__checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 16px;
+  font-size: 15px;
+}
+.mform label.chk {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink);
+  min-height: 44px;
+  cursor: pointer;
+}
+.mform .chk input {
+  width: 18px;
+  height: 18px;
+  min-height: 0;
+  padding: 0;
+  flex: none;
+  accent-color: var(--brand);
+}
+.mform__submit {
+  margin-top: 6px;
+  justify-content: space-between;
+}
+.mform__error {
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: #fff1f1;
+  color: #a4161a;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .modal__dialog {
+    padding: 32px 22px;
+    border-radius: 28px;
+  }
+  .modal__title {
+    font-size: 28px;
+    padding-right: 40px;
+  }
+  .modal__done .modal__title {
+    padding-right: 0;
+  }
+}
