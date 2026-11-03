@@ -53,21 +53,22 @@ export default async function OpengraphImage() {
             opacity: 0.8,
           }}
         />
-        <div style={{ display: "flex", alignItems: "flex-end", gap: 6, marginTop: 56 }}>
-          <div style={{ width: 14, height: 46, background: "#062656", borderRadius: 2 }} />
-          <div style={{ width: 20, height: 70, background: "#004FC5", borderRadius: 2 }} />
-          <div style={{ width: 26, height: 96, background: "#3976D2", borderRadius: 2 }} />
+        <div style={{ display: "flex", alignItems: "flex-end", gap: 5, marginTop: 44, flexShrink: 0 }}>
+          <div style={{ width: 10, height: 34, background: "#062656", borderRadius: 2 }} />
+          <div style={{ width: 15, height: 52, background: "#004FC5", borderRadius: 2 }} />
+          <div style={{ width: 20, height: 72, background: "#3976D2", borderRadius: 2 }} />
         </div>
-        <div style={{ display: "flex", fontSize: 76, fontWeight: 800, letterSpacing: "-0.045em", marginTop: 26, lineHeight: 1 }}>
+        <div style={{ display: "flex", fontSize: 64, fontWeight: 800, letterSpacing: "-0.045em", marginTop: 22, lineHeight: 1.05, flexShrink: 0 }}>
           Your work adds up.
         </div>
         <div
           style={{
             display: "flex",
-            fontSize: 76,
+            flexShrink: 0,
+            fontSize: 64,
             fontWeight: 800,
             letterSpacing: "-0.045em",
-            marginTop: 8,
+            marginTop: 4,
             lineHeight: 1.05,
             backgroundImage: "linear-gradient(90deg, #3976D2, #004FC5, #062656)",
             backgroundClip: "text",
@@ -80,7 +81,8 @@ export default async function OpengraphImage() {
           style={{
             display: "flex",
             flexDirection: "column",
-            marginTop: 44,
+            flexShrink: 0,
+            marginTop: 36,
             width: 960,
             borderRadius: 22,
             overflow: "hidden",
