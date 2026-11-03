@@ -64,6 +64,12 @@ Common types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `chore`. Keep 
 - Keep sentences short and plain. Avoid em dashes.
 - Use British English spelling (for example "organisation", "recognised").
 
+## License and brand assets
+
+By contributing, you agree that your contributions are licensed under the [MIT License](LICENSE).
+
+The Settl name, logo, icons and app screenshots are not MIT licensed (see [TRADEMARKS.md](TRADEMARKS.md)). Don't add new brand assets without asking first, and if you fork the project, replace them before publishing.
+
 ## Reporting bugs and ideas
 
 Use the issue templates. For bugs, include the page width, browser and steps to reproduce. Screenshots help.

@@ -78,6 +78,8 @@ The site deploys to Vercel. Every push to `main` creates a production deployment
 
 Contributions are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request, and follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-## Brand assets
+## License
 
-The Settl name, logo and app screenshots belong to the Settl team. Please don't use them to represent another product.
+The code is released under the [MIT License](LICENSE).
+
+The Settl name, logo, icons and app screenshots are **not** covered by that license: all rights are reserved. If you fork this project, replace them with your own. See [TRADEMARKS.md](TRADEMARKS.md) for the full list.
