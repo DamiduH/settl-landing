@@ -36,7 +36,10 @@
   text-decoration: none;
   font-weight: 600;
   font-size: 15px;
-  padding: 12px 14px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
   transition: color 0.2s;
 }
 .navl::after {

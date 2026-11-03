@@ -873,7 +873,9 @@
   color: var(--body);
 }
 .footer__bar a {
-  padding: 12px 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 .footer__brand {
   display: flex;
@@ -892,11 +894,6 @@
   }
   .closing__text {
     font-size: 17px;
-  }
-  .closing__ctas .btn,
-  .closing__ctas .btn2 {
-    width: 100%;
-    justify-content: space-between;
   }
   .footer__bar {
     flex-direction: column;
