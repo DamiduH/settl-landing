@@ -1,0 +1,75 @@
+@keyframes up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes tilt {
+  from { opacity: 0; transform: perspective(1600px) rotateX(24deg) translateY(80px) scale(0.94); }
+  to { opacity: 1; transform: perspective(1600px) rotateX(0) translateY(0) scale(1); }
+}
+@keyframes shimmer {
+  from { background-position: 0% 50%; }
+  to { background-position: 200% 50%; }
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes prog {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.9) translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes flow {
+  to { stroke-dashoffset: -20; }
+}
+
+/* Load-in for above-the-fold content */
+.u {
+  opacity: 0;
+  animation: up 0.9s var(--ease-out) forwards;
+}
+
+/* Shimmering gradient text */
+.grad {
+  background: linear-gradient(90deg, #3976d2, #004fc5, #062656, #004fc5, #3976d2);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+/* Slowly panning blue panels */
+.live {
+  background-size: 250% 250% !important;
+  animation: pan 14s ease-in-out infinite;
+}
+
+.bob {
+  animation: bob 6s ease-in-out infinite;
+}
+
+.flow {
+  stroke-dasharray: 4 6;
+  animation: flow 1s linear infinite;
+}
+
+.lift {
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s;
+}
+.lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 50px -30px rgba(6, 38, 86, 0.35);
+}
