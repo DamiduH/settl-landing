@@ -47,7 +47,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={jakarta.variable}>
+    <html lang="en" className={jakarta.variable} suppressHydrationWarning>
+      <head>
+        {/* Hide reveal targets before first paint so they don't flash in and out. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "if('IntersectionObserver'in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rv-ready')",
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
