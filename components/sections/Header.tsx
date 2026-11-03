@@ -6,7 +6,7 @@ export function Header() {
     <header className="site-header">
       <div className="site-header__row u">
         <a href="#" aria-label="Settl home" className="site-header__home">
-          <Logo height={32} decorative />
+          <Logo height={40} decorative />
         </a>
         <nav className="navlinks" aria-label="Main">
           <a className="navl" href="#how">How it works</a>
