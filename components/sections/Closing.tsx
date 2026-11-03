@@ -15,7 +15,7 @@ export function Closing() {
           <Logo height={48} />
         </div>
         <h2 className="closing__title rv">
-          <span className="grad">Let your stories add up.</span>
+          <span className="grad">Ready to make your work count?</span>
         </h2>
         <p className="closing__text rv">
           Join the waitlist and be first in line when lenders start accepting Settl scores.
