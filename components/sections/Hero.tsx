@@ -1,9 +1,10 @@
 import { DemoButton, WaitlistButton } from "../CtaButtons";
+import { HeroStage } from "../HeroStage";
 import { Header } from "./Header";
 
 export function Hero() {
   return (
-    <section className="hero">
+    <HeroStage>
       <Header />
 
       <div className="herotext">
@@ -27,6 +28,6 @@ export function Hero() {
           Free for freelancers. Settl is a credit score, not a lender.
         </p>
       </div>
-    </section>
+    </HeroStage>
   );
 }

@@ -128,3 +128,106 @@
     justify-content: space-between;
   }
 }
+
+/* Interactive dot field */
+@property --mx {
+  syntax: "<length-percentage>";
+  inherits: true;
+  initial-value: 50%;
+}
+@property --my {
+  syntax: "<length-percentage>";
+  inherits: true;
+  initial-value: 40%;
+}
+@keyframes idle {
+  0% { --mx: 20%; --my: 30%; }
+  25% { --mx: 70%; --my: 20%; }
+  50% { --mx: 85%; --my: 60%; }
+  75% { --mx: 35%; --my: 70%; }
+  100% { --mx: 20%; --my: 30%; }
+}
+.hero {
+  --mx: 50%;
+  --my: 40%;
+}
+.hero.idle {
+  animation: idle 14s ease-in-out infinite;
+}
+.dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#b9cff2 1.4px, transparent 1.6px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(#000 55%, transparent);
+  mask-image: linear-gradient(#000 55%, transparent);
+}
+.lit {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#2f6fe0 2.6px, transparent 2.9px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(circle 200px at var(--mx) var(--my), #000 0%, rgba(0, 0, 0, 0.5) 45%, transparent 75%);
+  mask-image: radial-gradient(circle 200px at var(--mx) var(--my), #000 0%, rgba(0, 0, 0, 0.5) 45%, transparent 75%);
+}
+.glow {
+  position: absolute;
+  left: var(--mx);
+  top: var(--my);
+  width: 520px;
+  height: 520px;
+  margin: -260px 0 0 -260px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(57, 118, 210, 0.22), transparent);
+  pointer-events: none;
+}
+
+/* Drifting aurora blobs */
+@keyframes drift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(18vw, 8vh) scale(1.2); }
+}
+@keyframes drift2 {
+  0%, 100% { transform: translate(0, 0) scale(1.1); }
+  50% { transform: translate(-16vw, 10vh) scale(0.9); }
+}
+@keyframes drift3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(8vw, -6vh); }
+}
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora i {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+}
+.aurora i:nth-child(1) {
+  width: 46vw;
+  height: 46vw;
+  left: -10vw;
+  top: -14vw;
+  background: #abcfff;
+  animation: drift1 22s ease-in-out infinite;
+}
+.aurora i:nth-child(2) {
+  width: 40vw;
+  height: 40vw;
+  right: -10vw;
+  top: -6vw;
+  background: #c9deff;
+  animation: drift2 26s ease-in-out infinite;
+}
+.aurora i:nth-child(3) {
+  width: 30vw;
+  height: 30vw;
+  left: 30vw;
+  top: 20vw;
+  background: #dceaff;
+  animation: drift3 18s ease-in-out infinite;
+}
