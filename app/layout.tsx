@@ -19,7 +19,7 @@ const description =
   "Settl turns your alternative income and the reliability you've already shown into a credit score lenders can read. No payslip needed.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://settl-landing.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://settl-landing-eosin.vercel.app"),
   title: "Settl | Your work adds up",
   description,
   applicationName: "Settl",
