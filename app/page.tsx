@@ -2,6 +2,7 @@ import { BrandDefs } from "@/components/BrandDefs";
 import { ModalProvider } from "@/components/ModalProvider";
 import { RevealObserver } from "@/components/RevealObserver";
 import { Hero } from "@/components/sections/Hero";
+import { Closing } from "@/components/sections/Closing";
 import { DataTrust } from "@/components/sections/DataTrust";
 import { DemoBand } from "@/components/sections/DemoBand";
 import { Faq } from "@/components/sections/Faq";
@@ -25,6 +26,7 @@ export default function Home() {
         <DemoBand />
         <Faq />
         <Team />
+        <Closing />
       </div>
       <RevealObserver />
     </ModalProvider>
