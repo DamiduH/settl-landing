@@ -16,7 +16,7 @@ export function Reads() {
     <section id="reads" className="reads container">
       <SectionHead eyebrow="What Settl reads" title="Your income and your bills. One score." />
 
-      <div className="flow">
+      <div className="rflow">
         <div className="flow__inputs">
           <div className="flow__card rv">
             <div className="flow__head">
