@@ -1,6 +1,7 @@
 import { DemoButton, WaitlistButton } from "../CtaButtons";
 import { HeroStage } from "../HeroStage";
 import { Header } from "./Header";
+import { MacWindow } from "./MacWindow";
 
 export function Hero() {
   return (
@@ -28,6 +29,8 @@ export function Hero() {
           Free for freelancers. Settl is a credit score, not a lender.
         </p>
       </div>
+
+      <MacWindow />
     </HeroStage>
   );
 }
