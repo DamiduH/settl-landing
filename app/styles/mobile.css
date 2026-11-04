@@ -160,6 +160,10 @@
     width: 52px;
     height: 52px;
   }
+  .plogo .plogo__payoneer {
+    width: 96px;
+    height: 19px;
+  }
   /* Product reveal: phone mock below the hero */
   .reveal {
     padding-bottom: var(--band-pad);

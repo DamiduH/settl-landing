@@ -61,7 +61,9 @@ export function Reads() {
               {platforms.map((p) => (
                 <li key={p.name} className="frow">
                   <span className="frow__brand">
-                    {p.wordmark ? (
+                    {p.name === "Payoneer" ? (
+                      <Image src={p.logo} alt={p.name} width={96} height={19} />
+                    ) : p.wordmark ? (
                       <Image src={p.logo} alt={p.name} width={52} height={52} className="frow__word" />
                     ) : (
                       <>

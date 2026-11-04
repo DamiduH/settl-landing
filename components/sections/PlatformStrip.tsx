@@ -12,7 +12,9 @@ function Logos({ hidden = false }: { hidden?: boolean }) {
           const announce = !hidden && pass === 0;
           return (
             <li className="plogo" key={`${pass}-${p.name}`}>
-              {p.wordmark ? (
+              {p.name === "Payoneer" ? (
+                <Image src={p.logo} alt={announce ? p.name : ""} width={115} height={22} className="plogo__payoneer" />
+              ) : p.wordmark ? (
                 <Image src={p.logo} alt={announce ? p.name : ""} width={64} height={64} className="plogo__word" />
               ) : (
                 <>

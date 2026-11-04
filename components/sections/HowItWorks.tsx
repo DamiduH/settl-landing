@@ -5,7 +5,7 @@ import { SectionHead } from "../SectionHead";
 
 const sources = [
   { name: "PayPal", logo: "/logos/paypal.svg", kind: "Income" },
-  { name: "Payoneer", logo: "/logos/payoneer.svg", kind: "Income" },
+  { name: "Payoneer", logo: "/logos/payoneer.png", kind: "Income" },
   { name: "Electricity", icon: "M13 2L4 14h7l-1 8 9-12h-7z", kind: "Bill" },
 ];
 
@@ -28,7 +28,14 @@ function ConnectVisual() {
         <div className="vis__row" key={s.name} style={{ animationDelay: `${0.2 + i * 0.15}s` }}>
           <span className="vis__logo">
             {s.logo ? (
-              <Image src={s.logo} alt="" width={22} height={22} />
+              <Image
+                src={s.logo}
+                alt=""
+                width={22}
+                height={22}
+                unoptimized={s.name === "Payoneer"}
+                style={s.name === "Payoneer" ? { objectFit: "cover", objectPosition: "left" } : undefined}
+              />
             ) : (
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#004FBC" strokeWidth="2.2" aria-hidden="true">
                 <path d={s.icon} />
