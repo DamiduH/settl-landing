@@ -5,14 +5,15 @@
  */
 .reveal {
   --e: 1;
+  --reveal-stage-height: min(100svh, 860px);
   position: relative;
-  height: 230vh;
+  height: calc(var(--reveal-stage-height) + min(70svh, 640px));
 }
 .reveal__sticky {
   position: sticky;
   top: 0;
   height: 100vh;
-  height: 100svh;
+  height: var(--reveal-stage-height);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,8 +29,6 @@
   line-height: 1.08;
   letter-spacing: -0.04em;
   text-wrap: balance;
-  opacity: clamp(0, calc(var(--e) * 2.2 - 0.3), 1);
-  transform: translateY(calc((1 - var(--e)) * 40px));
 }
 .reveal__title .grad {
   padding-bottom: 0.08em;
@@ -37,7 +36,7 @@
 
 /* Window: starts small and tipped back into the page, then rises flat */
 .reveal__mac {
-  width: min(1080px, 100%, calc((100svh - 220px) * 2.15));
+  width: min(1080px, 100%, calc((var(--reveal-stage-height) - 220px) * 2.15));
 }
 .reveal .macwrap {
   margin: 0;

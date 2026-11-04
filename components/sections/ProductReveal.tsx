@@ -5,8 +5,8 @@ import { MacWindow } from "./MacWindow";
 import { PhoneMock } from "./PhoneMock";
 
 /** Where in the section's scroll the window starts and finishes flattening (0–1). */
-const START = 0.34;
-const END = 0.9;
+const START = 0.08;
+const END = 0.8;
 
 /** Smooth in and out, so the window eases into the tilt change and settles gently. */
 const ease = (t: number) => t * t * (3 - 2 * t);
