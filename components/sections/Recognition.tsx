@@ -9,25 +9,33 @@ const awards = [
   { tag: "Intelicon 2026", title: "Finalist", line: "[One line about Intelicon]" },
 ];
 
-const INTERVAL = 5000;
+const INTERVAL = 6000;
+const SWIPE = 40;
 
 export function Recognition() {
   const [slide, setSlide] = useState(0);
+  const [paused, setPaused] = useState(false);
   const timer = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
+  const touchX = useRef<number | null>(null);
 
   const start = useCallback(() => {
     clearInterval(timer.current);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     timer.current = setInterval(() => setSlide((s) => (s + 1) % awards.length), INTERVAL);
   }, []);
 
   useEffect(() => {
+    if (paused) {
+      clearInterval(timer.current);
+      return;
+    }
     start();
     return () => clearInterval(timer.current);
-  }, [start]);
+  }, [start, paused]);
 
   const go = (i: number) => {
     setSlide((i + awards.length) % awards.length);
-    start();
+    if (!paused) start();
   };
 
   return (
@@ -35,23 +43,43 @@ export function Recognition() {
       <div className="recog__head">
         <div className="shead shead--left">
           <h2 className="shead__title rv">
-            <span className="shead__line">
-              Recognised by Sri Lanka&apos;s <span className="grad">startup community</span>
-            </span>
+            <span className="shead__line">Recognised by Sri Lanka&apos;s</span>
+            <span className="shead__line grad">startup community</span>
           </h2>
         </div>
         <div className="recog__nav">
-          <button type="button" className="recog__arrow" onClick={() => go(slide - 1)} aria-label="Previous">
+          <button type="button" className="recog__arrow" onClick={() => go(slide - 1)} aria-label="Previous award">
             <ArrowLeft />
           </button>
-          <button type="button" className="recog__arrow recog__arrow--next live" onClick={() => go(slide + 1)} aria-label="Next">
+          <button
+            type="button"
+            className="recog__arrow recog__arrow--next live"
+            onClick={() => go(slide + 1)}
+            aria-label="Next award"
+          >
             <ArrowRight color="#fff" />
           </button>
         </div>
       </div>
 
-      <div className="recog__frame">
-        <div className="slides" style={{ transform: `translateX(${-slide * 100}%)` }} aria-live="polite">
+      <div
+        className="recog__frame rv"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onFocus={() => setPaused(true)}
+        onBlur={() => setPaused(false)}
+        onTouchStart={(e) => {
+          touchX.current = e.touches[0].clientX;
+          setPaused(true);
+        }}
+        onTouchEnd={(e) => {
+          if (touchX.current === null) return;
+          const dx = e.changedTouches[0].clientX - touchX.current;
+          touchX.current = null;
+          if (Math.abs(dx) > SWIPE) go(slide + (dx < 0 ? 1 : -1));
+        }}
+      >
+        <div className="slides" style={{ transform: `translateX(${-slide * 100}%)` }} aria-live={paused ? "polite" : "off"}>
           {awards.map((a, i) => (
             <div
               className="slide"

@@ -6,9 +6,9 @@ export function DemoBand() {
       <div className="band rv live">
         <div className="band__dots" aria-hidden="true" />
         <div className="band__copy">
-          <h2 className="band__title">See Settl working.</h2>
+          <h2 className="band__title">See a score built, start to finish.</h2>
           <p className="band__text">
-            Book a 15-minute walkthrough, from sign-up to score.
+            A 15-minute walkthrough for lenders and partners, from sign-up to Settl Score.
           </p>
         </div>
         <DemoButton className="band__cta" />

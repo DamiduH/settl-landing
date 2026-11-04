@@ -18,7 +18,7 @@ export function Closing() {
           <span className="grad">Let your stories add up.</span>
         </h2>
         <p className="closing__text rv">
-          Join the waitlist and be first in line when lenders start accepting Settl scores.
+          Join the waitlist and be first in line when lenders start accepting Settl Scores.
         </p>
         <div className="closing__ctas rv">
           <WaitlistButton />
@@ -27,13 +27,15 @@ export function Closing() {
       </div>
       <footer className="footer">
         <div className="footer__bar">
-          <span className="footer__brand">
+          <div className="footer__brand">
             <Logo height={22} />
-            by Division Zero
-          </span>
-          <a href="mailto:randeshdaluwatte@gmail.com">randeshdaluwatte@gmail.com</a>
-          <span>© 2026 Division Zero</span>
-          <span className="footer__note">Settl is a credit scoring service, not a lender.</span>
+            <span>by Division Zero</span>
+          </div>
+          <p className="footer__note">Settl is a credit scoring service, not a lender.</p>
+          <div className="footer__meta">
+            <a href="mailto:randeshdaluwatte@gmail.com">randeshdaluwatte@gmail.com</a>
+            <span>© 2026 Division Zero</span>
+          </div>
         </div>
       </footer>
     </section>

@@ -19,10 +19,10 @@ export default function Home() {
       <div className="page">
         <BrandDefs />
         <Hero />
-        <Recognition />
         <Problem />
         <Reads />
         <HowItWorks />
+        <Recognition />
         <DemoBand />
         <Faq />
         <Team />

@@ -105,9 +105,9 @@ function ScoreVisual() {
 }
 
 const steps = [
-  { t: "Connect", d: "Link where you get paid and the bills you pay.", v: <ConnectVisual /> },
-  { t: "Track", d: "Settl follows your income and payments month by month.", v: <TrackVisual /> },
-  { t: "Score and share", d: "Get one Settl Score. Share your Settl ID with a lender.", v: <ScoreVisual /> },
+  { t: "Connect", d: "Link the accounts you get paid into and the bills you already pay.", v: <ConnectVisual /> },
+  { t: "Track", d: "Settl follows your income and payments month by month, so your score keeps up with you.", v: <TrackVisual /> },
+  { t: "Score and share", d: "Get your Settl Score, then share your Settl ID with the lender you choose.", v: <ScoreVisual /> },
 ];
 
 export function HowItWorks() {
@@ -115,7 +115,10 @@ export function HowItWorks() {
     <section id="how" className="how">
       <div className="how__band">
         <div className="container">
-          <SectionHead lines={["Three steps.", <span className="grad" key="g">A few minutes.</span>]} />
+          <SectionHead
+            lines={["Three steps.", <span className="grad" key="g">A few minutes.</span>]}
+            lead="No paperwork and no branch visit. Everything happens from your phone or laptop."
+          />
 
           <ol className="how__grid">
             {steps.map((s, i) => (

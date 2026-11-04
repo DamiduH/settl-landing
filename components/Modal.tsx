@@ -10,10 +10,10 @@ import { WaitlistForm } from "./forms/WaitlistForm";
 const done = {
   waitlist: {
     title: "You're on the list.",
-    text: "We'll message you as soon as a lender starts accepting Settl scores.",
+    text: "We'll message you as soon as a lender starts accepting Settl Scores.",
   },
   demo: {
-    title: "Thanks.",
+    title: "Request sent.",
     text: "We'll reply within a day to set a time.",
   },
 };
@@ -102,13 +102,13 @@ export function Modal() {
             </h2>
             {modal === "waitlist" && (
               <>
-                <p className="modal__sub">Just your details. No account access needed.</p>
+                <p className="modal__sub">Just your details for now. No account access needed.</p>
                 <WaitlistForm onDone={() => setSubmitted(true)} />
               </>
             )}
             {modal === "demo" && (
               <>
-                <p className="modal__sub">15 minutes, from sign-up to score.</p>
+                <p className="modal__sub">A 15-minute walkthrough, from sign-up to Settl Score.</p>
                 <DemoForm onDone={() => setSubmitted(true)} />
               </>
             )}

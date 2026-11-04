@@ -65,16 +65,16 @@ export function MacWindow() {
 
       <FloatNote
         side="left"
-        top="38%"
+        top="30%"
         bobDelay=".6s"
         popDelay="2s"
         icon={<Check />}
-        title="Income streams linked"
-        sub="Just now"
+        title="PayPal and Payoneer linked"
+        sub="12 months of income read"
       />
       <FloatNote
         side="right"
-        top="64%"
+        top="62%"
         bobDelay="2s"
         popDelay="2.3s"
         icon={
@@ -83,8 +83,8 @@ export function MacWindow() {
             <path d="M3 10h18M8 3v4M16 3v4" />
           </svg>
         }
-        title="Bills paid on time"
-        sub="Reliability added"
+        title="Electricity bill paid"
+        sub="On time, 14 months running"
       />
     </div>
   );

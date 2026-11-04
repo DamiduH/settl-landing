@@ -41,7 +41,7 @@ export function Problem() {
                 You don&apos;t have one.
               </span>,
             ]}
-            lead="Your income is real. It just doesn't fit the boxes."
+            lead="Your income is real. It just doesn't fit the boxes a bank expects."
           />
 
           <div className="problem__grid">
@@ -54,7 +54,7 @@ export function Problem() {
 
               <div className="loanform__field loanform__field--flag">
                 <div className="loanform__label">
-                  A payslip <span className="loanform__req">Required</span>
+                  Payslip <span className="loanform__req">Required</span>
                 </div>
                 <div className="loanform__drop">
                   <Upload />
@@ -64,7 +64,7 @@ export function Problem() {
 
               <div className="loanform__field">
                 <div className="loanform__label">
-                  An employer letter <span className="loanform__req">Required</span>
+                  Employer letter <span className="loanform__req">Required</span>
                 </div>
                 <div className="loanform__input loanform__input--empty">
                   <Cross size={14} color="#D64545" weight={2.6} />
@@ -72,7 +72,7 @@ export function Problem() {
                 </div>
               </div>
 
-              <div className="loanform__field">
+              <div className="loanform__field loanform__field--extra">
                 <div className="loanform__label">
                   EPF records <span className="loanform__req">Required</span>
                 </div>
@@ -92,7 +92,7 @@ export function Problem() {
             <div className="have rv">
               <div className="have__top">
                 <div>
-                  <div className="have__label">You actually have</div>
+                  <div className="have__label">What you do have</div>
                   <div className="have__title">Income every month</div>
                 </div>
                 <span className="have__trend">
@@ -119,7 +119,7 @@ export function Problem() {
                   </li>
                 ))}
               </ul>
-              <div className="have__foot">Settl reads what you actually have.</div>
+              <div className="have__foot">Settl scores this instead.</div>
             </div>
           </div>
         </div>

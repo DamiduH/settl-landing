@@ -1,0 +1,436 @@
+/*
+ * Phone layout (≤ 640px). Every phone rule lives here, built on one token set,
+ * so spacing, radii and type stay identical from section to section.
+ *
+ *   gutter 16 · section 72 · band padding 56 · heading gap 28
+ *   cards: radius 22, padding 20 · bands: radius 28, inset 8
+ *   type: h2 32 · lead 16.5 · card title 19 · body 15.5 · meta 13
+ */
+@media (max-width: 640px) {
+  :root {
+    --gutter: 16px;
+    --section: 72px;
+    --band-pad: 56px;
+    --band-inset: 8px;
+    --head-gap: 28px;
+    --m-radius: 22px;
+    --m-pad: 20px;
+  }
+
+  /* Type scale */
+  .shead {
+    gap: 12px;
+  }
+  .shead__title,
+  .recog__head .shead__title {
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+  }
+  .shead__lead {
+    margin-top: 0;
+    font-size: 16.5px;
+    line-height: 1.55;
+  }
+
+  /* Shared full-width button stack */
+  .herotext__ctas,
+  .closing__ctas {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .herotext__ctas .btn,
+  .closing__ctas .btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .herotext__ctas .btn2,
+  .closing__ctas .btn2,
+  .btn2.band__cta {
+    width: 100%;
+    justify-content: center;
+    padding-right: 24px;
+  }
+  .btn--lg,
+  .btn.btn--lg,
+  .btn2.btn--lg {
+    min-height: 56px;
+    font-size: 16px;
+  }
+  .btn.btn--lg .ar,
+  .btn2.btn--lg .pi {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Header */
+  .site-header {
+    padding-top: 14px;
+  }
+  .site-header__row {
+    margin: 0;
+    padding: 0;
+  }
+  .site-header__home .slogo {
+    height: 28px !important;
+  }
+  .btn.navcta {
+    min-height: 44px;
+    gap: 8px;
+    font-size: 14px;
+    padding: 3px 3px 3px 16px;
+  }
+
+  /* Hero */
+  .hero {
+    padding-bottom: 56px;
+  }
+  .herotext {
+    padding-top: 52px;
+  }
+  .herotext h1 {
+    font-size: clamp(38px, 11.4vw, 48px);
+    letter-spacing: -0.045em;
+  }
+  .herotext__sub {
+    margin-top: 16px;
+    font-size: 16.5px;
+  }
+  .herotext__ctas {
+    margin-top: 28px;
+  }
+  .platforms {
+    margin-top: 40px;
+  }
+  .platforms__label {
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+  .marquee {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+  .marquee__set {
+    gap: 40px;
+    padding: 0 20px;
+  }
+  .plogo {
+    height: 44px;
+    font-size: 17px;
+    gap: 8px;
+  }
+  .plogo img {
+    width: 22px;
+    height: 22px;
+  }
+  .plogo .plogo__word {
+    width: 52px;
+    height: 52px;
+  }
+  .macwrap {
+    margin-top: 24px;
+  }
+  .mac {
+    border-radius: var(--m-radius);
+    box-shadow: 0 40px 80px -36px rgba(6, 38, 86, 0.45), 0 0 0 5px rgba(255, 255, 255, 0.55);
+  }
+  .mac__bar {
+    padding: 10px 14px;
+    gap: 6px;
+  }
+  .mac__light {
+    width: 9px;
+    height: 9px;
+  }
+  /* The full dashboard is unreadable at phone width, so frame the score up close */
+  .mac__shot {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: 6% 70%;
+  }
+
+  /* Shared card shape */
+  .loanform,
+  .have,
+  .flow__card,
+  .flow__score,
+  .recog__frame,
+  .faq__item,
+  .team__card,
+  .band {
+    border-radius: var(--m-radius);
+  }
+  .problem__band,
+  .how__band,
+  .faq__band {
+    border-radius: 28px;
+  }
+
+  /* Problem: the form makes the point with two empty boxes; the chart carries the rest */
+  .problem__grid {
+    gap: 12px;
+  }
+  .loanform,
+  .have {
+    padding: var(--m-pad);
+    gap: 14px;
+  }
+  .loanform__field--extra,
+  .have__list {
+    display: none;
+  }
+  .loanform__drop {
+    min-height: 64px;
+    font-size: 14px;
+  }
+  .loanform__input,
+  .loanform__status {
+    font-size: 14px;
+  }
+  .have__title {
+    font-size: 19px;
+  }
+  .have__chart {
+    height: 112px;
+    gap: 8px;
+  }
+  .have__foot {
+    padding-top: 14px;
+    font-size: 15px;
+  }
+
+  /* Reads: same rows, tighter */
+  .flow__card {
+    padding: var(--m-pad) var(--m-pad) 6px;
+  }
+  .flow__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+  .flow__title {
+    font-size: 19px;
+  }
+  .flow__sub {
+    font-size: 14px;
+  }
+  .flow__aside {
+    display: none;
+  }
+  .frow {
+    min-height: 48px;
+  }
+  .frow__brand {
+    font-size: 16px;
+  }
+  .frow__bill {
+    font-size: 15px;
+  }
+  .frow__streak {
+    grid-template-columns: repeat(12, 6px);
+    gap: 3px;
+  }
+  .frow__streak i {
+    height: 6px;
+  }
+  .flow__link {
+    padding: 10px 0;
+  }
+  .flow__score {
+    padding: 24px var(--m-pad);
+  }
+  .flow__number {
+    font-size: 64px;
+  }
+  .flow__meter {
+    height: 22px;
+    gap: 3px;
+  }
+  .flow__caption {
+    font-size: 15.5px;
+  }
+
+  /* How it works: a plain numbered list, no mock-ups */
+  .how__grid {
+    gap: 0;
+    position: relative;
+  }
+  .hstep {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+  .hstep__visual {
+    display: none;
+  }
+  .hstep__body {
+    position: relative;
+    padding: 0 0 28px 52px;
+    gap: 6px;
+  }
+  .hstep:last-child .hstep__body {
+    padding-bottom: 0;
+  }
+  /* Thin rail joining the numbers */
+  .hstep:not(:last-child) .hstep__body::before {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 40px;
+    bottom: 4px;
+    width: 2px;
+    border-radius: 2px;
+    background: var(--pale);
+  }
+  .hstep__top {
+    display: block;
+  }
+  .hstep__num {
+    position: absolute;
+    left: 0;
+    top: -3px;
+  }
+  .hstep__title {
+    font-size: 19px;
+    line-height: 30px;
+  }
+  .hstep__desc {
+    font-size: 15.5px;
+  }
+
+  /* Recognition */
+  .recog {
+    padding-bottom: 56px;
+  }
+  .recog__head {
+    margin-bottom: 20px;
+  }
+  .recog__nav {
+    display: none;
+  }
+  .awph {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+    margin: 8px;
+    border-radius: 16px;
+  }
+  .awtext {
+    padding: 12px var(--m-pad) 24px;
+    gap: 8px;
+  }
+  .awtext__tag {
+    font-size: 26px;
+  }
+  .awtext__line {
+    font-size: 15.5px;
+  }
+  .recog__dots {
+    margin-top: 8px;
+  }
+
+  /* Demo band */
+  .band {
+    padding: 36px var(--m-pad) var(--m-pad);
+    gap: 24px;
+  }
+  .band__title {
+    font-size: 28px;
+  }
+  .band__text {
+    margin-top: 10px;
+    font-size: 15.5px;
+  }
+
+  /* FAQ */
+  .faq__list {
+    gap: 8px;
+  }
+  .faq__item {
+    padding: 0 18px;
+  }
+  .faq__item summary {
+    padding: 14px 0;
+    gap: 14px;
+    font-size: 16px;
+  }
+  .faq__item p {
+    padding-bottom: 18px;
+    font-size: 15.5px;
+  }
+  .pl {
+    width: 28px;
+    height: 28px;
+  }
+  .faq__more {
+    margin-top: 24px;
+    font-size: 15px;
+    text-wrap: balance;
+  }
+  .faq__more a {
+    overflow-wrap: anywhere;
+  }
+
+  /* Team: compact rows */
+  .team__grid {
+    gap: 10px;
+  }
+  .team__card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px;
+  }
+  .team__photo {
+    flex: none;
+    width: 68px;
+    height: 68px;
+    border-radius: 14px;
+  }
+  .team__meta {
+    flex: 1;
+    min-width: 0;
+    padding: 0 4px 0 0;
+  }
+  .team__name {
+    font-size: 17px;
+  }
+  .team__role {
+    font-size: 13.5px;
+    margin-top: 2px;
+  }
+
+  /* Closing and footer */
+  .closing__inner {
+    padding: 72px var(--gutter) 56px;
+  }
+  .closing__logo {
+    margin-bottom: 20px;
+  }
+  .closing__logo .slogo {
+    height: 36px !important;
+  }
+  .closing__title {
+    font-size: clamp(34px, 10vw, 42px);
+  }
+  .closing__text {
+    margin-top: 14px;
+    font-size: 16.5px;
+  }
+  .closing__ctas {
+    margin-top: 28px;
+  }
+  .footer__bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: var(--m-pad);
+    border-radius: var(--m-radius);
+  }
+  .footer__meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

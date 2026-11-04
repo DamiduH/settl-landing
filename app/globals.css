@@ -21,6 +21,14 @@
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --grad-live: linear-gradient(120deg, #3976d2, #004fc5, #062656, #004fc5, #3976d2);
   --shadow-card: 0 30px 60px -40px rgba(6, 38, 86, 0.3);
+
+  /* Layout rhythm */
+  --wrap: 1200px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --section: clamp(80px, 10vw, 128px);
+  --band-pad: clamp(64px, 8.5vw, 112px);
+  --band-inset: clamp(8px, 1.4vw, 16px);
+  --head-gap: clamp(36px, 5vw, 64px);
 }
 
 *,
@@ -87,13 +95,20 @@ button {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--wrap);
   margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
 }
 
-
+/* Inset rounded band that frames a section */
+.band-wrap {
+  padding: 0 var(--band-inset);
+}
+.band-panel {
+  border-radius: clamp(28px, 3vw, 40px);
+  padding: var(--band-pad) 0;
+}
 
 .ph {
   background: linear-gradient(135deg, #e3edff, #f3f7ff);
@@ -116,7 +131,7 @@ button {
 }
 .shead__title {
   margin: 0;
-  font-size: clamp(30px, 4.3vw, 60px);
+  font-size: clamp(32px, 4.3vw, 58px);
   line-height: 1.08;
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -151,18 +166,11 @@ button {
   -webkit-box-decoration-break: clone;
 }
 .shead__lead {
-  margin: 0;
-  max-width: 560px;
-  font-size: 18px;
+  margin: 4px 0 0;
+  max-width: 580px;
+  font-size: 19px;
   line-height: 1.6;
   color: var(--body);
   text-wrap: pretty;
 }
-@media (max-width: 640px) {
-  .shead {
-    gap: 14px;
-  }
-  .shead__lead {
-    font-size: 17px;
-  }
-}
+
