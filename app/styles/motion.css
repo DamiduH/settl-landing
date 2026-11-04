@@ -93,6 +93,13 @@
   opacity: 0;
 }
 
+/* Touch scrolling must never depend on an observer to expose content. */
+@media (hover: none), (pointer: coarse) {
+  .rv-ready .rv:not(.in) {
+    opacity: 1;
+  }
+}
+
 /* Respect reduced motion: no animation, everything visible straight away */
 @media (prefers-reduced-motion: reduce) {
   *,

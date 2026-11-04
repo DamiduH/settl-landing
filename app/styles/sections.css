@@ -1,5 +1,7 @@
 /* Recognition slideshow */
 .recog {
+  width: 100%;
+  min-width: 0;
   padding-top: var(--section);
   padding-bottom: calc(var(--section) * 0.75);
 }
@@ -17,8 +19,11 @@
 .recog__nav {
   display: flex;
   gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
 }
 .recog__arrow {
+  touch-action: manipulation;
   width: 52px;
   height: 52px;
   border-radius: 50%;
@@ -34,6 +39,8 @@
   background: linear-gradient(135deg, #3976d2, #004fc5, #062656, #004fc5, #3976d2);
 }
 .recog__frame {
+  width: 100%;
+  min-width: 0;
   border-radius: 32px;
   overflow: hidden;
   background: #fff;
@@ -41,6 +48,8 @@
   box-shadow: var(--shadow-card);
 }
 .slides {
+  width: 100%;
+  min-width: 0;
   display: flex;
   transition: transform 0.8s cubic-bezier(0.7, 0, 0.2, 1);
 }
@@ -624,19 +633,24 @@
   counter-reset: none;
 }
 .hstep {
+  /* Concentric corners: outer radius − visual inset = inner radius. */
+  --step-radius: 40px;
+  --step-inset: 20px;
+  --step-inner-radius: calc(var(--step-radius) - var(--step-inset));
+  --step-content-height: 190px;
   display: flex;
   flex-direction: column;
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 28px;
+  border-radius: var(--step-radius);
   overflow: hidden;
   box-shadow: 0 30px 60px -44px rgba(6, 38, 86, 0.4);
 }
 .hstep__visual {
-  height: 230px;
-  padding: 22px;
+  height: 250px;
+  padding: var(--step-inset);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background: radial-gradient(circle at 30% 20%, #fff, #e8f0ff);
   border-bottom: 1px solid var(--line-soft);
@@ -681,7 +695,7 @@
 /* Step visuals */
 .vis {
   width: 100%;
-  max-width: 300px;
+  min-width: 0;
 }
 .vis--connect {
   display: flex;
@@ -693,7 +707,7 @@
   align-items: center;
   gap: 12px;
   padding: 10px 12px;
-  border-radius: 16px;
+  border-radius: var(--step-inner-radius);
   background: #fff;
   border: 1px solid var(--line);
   box-shadow: 0 10px 24px -20px rgba(6, 38, 86, 0.5);
@@ -732,8 +746,9 @@
   justify-content: center;
 }
 .vis--track {
+  min-height: var(--step-content-height);
   padding: 16px;
-  border-radius: 20px;
+  border-radius: var(--step-inner-radius);
   background: #fff;
   border: 1px solid var(--line);
   box-shadow: 0 10px 24px -20px rgba(6, 38, 86, 0.5);
@@ -776,12 +791,16 @@
   color: var(--muted);
 }
 .vis--score {
+  min-height: var(--step-content-height);
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 .vis__scorecard {
-  border-radius: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--step-inner-radius);
   padding: 18px 20px;
   color: #fff;
   background: linear-gradient(135deg, #3976d2, #004fc5 55%, #062656);
@@ -798,7 +817,8 @@
   display: flex;
   align-items: baseline;
   gap: 10px;
-  margin-top: 4px;
+  margin-top: auto;
+  padding-top: 4px;
 }
 .vis__number {
   font-size: 48px;
@@ -816,7 +836,7 @@
   align-items: center;
   gap: 10px;
   padding: 12px 14px;
-  border-radius: 16px;
+  border-radius: var(--step-inner-radius);
   background: #fff;
   border: 1px solid var(--line);
 }
@@ -903,12 +923,20 @@
   padding: 0 26px;
   transition: border-color 0.25s, box-shadow 0.25s;
 }
-.faq__item[open] {
+.faq__item[data-open="true"] {
   border-color: #c7daf7;
   box-shadow: 0 20px 40px -32px rgba(6, 38, 86, 0.45);
 }
-.faq__item summary {
-  list-style: none;
+.faq__question {
+  margin: 0;
+  font-size: inherit;
+}
+.faq__trigger {
+  width: 100%;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -919,11 +947,22 @@
   font-weight: 700;
   min-height: 44px;
 }
-.faq__item summary::-webkit-details-marker {
-  display: none;
+.faq__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.4s var(--ease-out), opacity 0.3s ease;
+}
+.faq__item[data-open="true"] .faq__answer {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.faq__answer-inner {
+  min-height: 0;
+  overflow: hidden;
 }
 .faq__item p {
-  margin: -4px 0 0;
+  margin: 0;
   padding-bottom: 22px;
   max-width: 64ch;
   font-size: 16px;
@@ -955,7 +994,7 @@
 .pl::after {
   transform: rotate(90deg);
 }
-.faq__item[open] .pl {
+.faq__item[data-open="true"] .pl {
   transform: rotate(45deg);
   background: var(--pale);
 }

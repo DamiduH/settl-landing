@@ -71,6 +71,8 @@
 }
 .phone {
   width: min(300px, 82vw);
+  aspect-ratio: 9 / 19;
+  display: flex;
   margin: 0 auto;
   padding: 10px;
   border-radius: 48px;
@@ -79,6 +81,10 @@
     0 0 0 6px rgba(255, 255, 255, 0.6);
 }
 .phone__screen {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
   border-radius: 38px;
   overflow: hidden;
   background: var(--bg);
@@ -112,6 +118,7 @@
 .phone__icons i:nth-child(2) { height: 8px; }
 .phone__icons i:nth-child(3) { height: 11px; }
 .phone__app {
+  flex: 1;
   padding: 8px 14px 0;
   display: flex;
   flex-direction: column;
@@ -232,9 +239,15 @@
 .phone__up {
   color: #1f9d55;
 }
+.phone__income {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 .phone__bars {
   margin-top: 10px;
-  height: 54px;
+  flex: 1;
+  min-height: 54px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 6px;

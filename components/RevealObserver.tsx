@@ -14,12 +14,13 @@ export function RevealObserver() {
     const root = document.documentElement;
     const items = Array.from(document.querySelectorAll<HTMLElement>(".rv"));
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const touch = window.matchMedia("(hover: none), (pointer: coarse)").matches;
 
     if (reduce) {
       document.querySelector<SVGSVGElement>("svg:has(#sgA)")?.pauseAnimations();
     }
 
-    if (reduce || !("IntersectionObserver" in window)) {
+    if (reduce || touch || !("IntersectionObserver" in window)) {
       items.forEach((el) => el.classList.add("in"));
       return;
     }
@@ -46,7 +47,10 @@ export function RevealObserver() {
     );
 
     items.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      root.classList.remove("rv-ready");
+    };
   }, []);
 
   return null;

@@ -65,7 +65,7 @@ export function Reads() {
                       <Image src={p.logo} alt={p.name} width={52} height={52} className="frow__word" />
                     ) : (
                       <>
-                        <Image src={p.logo} alt="" width={22} height={22} />
+                        {!p.hideIcon && <Image src={p.logo} alt="" width={22} height={22} />}
                         <span style={{ color: p.color }}>{p.name}</span>
                       </>
                     )}

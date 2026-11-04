@@ -38,6 +38,11 @@ export function Recognition() {
     if (!paused) start();
   };
 
+  const move = (direction: number) => {
+    setSlide((current) => (current + direction + awards.length) % awards.length);
+    if (!paused) start();
+  };
+
   return (
     <section className="recog container" aria-roledescription="carousel" aria-label="Recognition">
       <div className="recog__head">
@@ -46,19 +51,6 @@ export function Recognition() {
             <span className="shead__line">Recognised by Sri Lanka&apos;s</span>
             <span className="shead__line grad">startup community</span>
           </h2>
-        </div>
-        <div className="recog__nav">
-          <button type="button" className="recog__arrow" onClick={() => go(slide - 1)} aria-label="Previous award">
-            <ArrowLeft />
-          </button>
-          <button
-            type="button"
-            className="recog__arrow recog__arrow--next live"
-            onClick={() => go(slide + 1)}
-            aria-label="Next award"
-          >
-            <ArrowRight color="#fff" />
-          </button>
         </div>
       </div>
 
@@ -76,8 +68,9 @@ export function Recognition() {
           if (touchX.current === null) return;
           const dx = e.changedTouches[0].clientX - touchX.current;
           touchX.current = null;
-          if (Math.abs(dx) > SWIPE) go(slide + (dx < 0 ? 1 : -1));
+          if (Math.abs(dx) > SWIPE) move(dx < 0 ? 1 : -1);
         }}
+        onTouchCancel={() => { touchX.current = null; setPaused(false); }}
       >
         <div className="slides" style={{ transform: `translateX(${-slide * 100}%)` }} aria-live={paused ? "polite" : "off"}>
           {awards.map((a, i) => (
@@ -101,6 +94,20 @@ export function Recognition() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="recog__nav">
+        <button type="button" className="recog__arrow" onClick={() => move(-1)} aria-label="Previous award">
+          <ArrowLeft />
+        </button>
+        <button
+          type="button"
+          className="recog__arrow recog__arrow--next live"
+          onClick={() => move(1)}
+          aria-label="Next award"
+        >
+          <ArrowRight color="#fff" />
+        </button>
       </div>
 
       <div className="recog__dots">

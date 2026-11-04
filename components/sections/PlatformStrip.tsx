@@ -16,7 +16,7 @@ function Logos({ hidden = false }: { hidden?: boolean }) {
                 <Image src={p.logo} alt={announce ? p.name : ""} width={64} height={64} className="plogo__word" />
               ) : (
                 <>
-                  <Image src={p.logo} alt="" width={26} height={26} />
+                  {!p.hideIcon && <Image src={p.logo} alt="" width={26} height={26} />}
                   <span style={{ color: p.color }} aria-hidden={!announce || undefined}>
                     {p.name}
                   </span>

@@ -56,9 +56,7 @@ export function Team() {
                 aria-label={`${m.n} on LinkedIn (opens in a new tab)`}
                 className="team__link"
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#004FBC" aria-hidden="true">
-                  <path d="M6.5 8.5h-3V20h3V8.5zM5 4a1.75 1.75 0 100 3.5A1.75 1.75 0 005 4zm15 9.6c0-3-1.6-4.4-3.8-4.4-1.7 0-2.5.9-2.9 1.6V8.5h-3V20h3v-6.2c0-1.6.8-2.4 2-2.4s1.7.8 1.7 2.4V20h3v-6.4z" />
-                </svg>
+                <Image src="/logos/linkedin-svgrepo-com.svg" alt="" width={28} height={28} />
               </a>
             </div>
           </div>

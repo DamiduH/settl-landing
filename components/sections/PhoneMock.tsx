@@ -51,7 +51,7 @@ export function PhoneMock() {
             <span className="phone__copy">Copy</span>
           </div>
 
-          <div className="phone__card">
+          <div className="phone__card phone__income">
             <div className="phone__cardhead">
               <span>Monthly income</span>
               <span className="phone__up">+18%</span>

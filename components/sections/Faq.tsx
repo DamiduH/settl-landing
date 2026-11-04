@@ -1,3 +1,6 @@
+"use client";
+
+import { useId, useState } from "react";
 import { SectionHead } from "../SectionHead";
 
 type Qa = { q: string; a: string };
@@ -29,6 +32,38 @@ const faqs: Qa[] = [
   },
 ];
 
+function FaqItem({ q, a }: Qa) {
+  const [open, setOpen] = useState(false);
+  const id = useId();
+
+  return (
+    <div className="faq__item rv" data-open={open}>
+      <h3 className="faq__question">
+        <button
+          type="button"
+          className="faq__trigger"
+          id={`${id}-question`}
+          aria-expanded={open}
+          aria-controls={`${id}-answer`}
+          onClick={() => setOpen((value) => !value)}
+        >
+          <span>{q}</span>
+          <span className="pl" aria-hidden="true" />
+        </button>
+      </h3>
+      <div
+        className="faq__answer"
+        id={`${id}-answer`}
+        role="region"
+        aria-labelledby={`${id}-question`}
+        inert={!open}
+      >
+        <div className="faq__answer-inner"><p>{a}</p></div>
+      </div>
+    </div>
+  );
+}
+
 export function Faq() {
   return (
     <section id="faq" className="faq">
@@ -37,13 +72,7 @@ export function Faq() {
           <SectionHead lines={[<>Questions, <span className="grad">answered.</span></>]} />
           <div className="faq__list">
             {faqs.map((f) => (
-              <details className="faq__item rv" key={f.q}>
-                <summary>
-                  <span>{f.q}</span>
-                  <span className="pl" aria-hidden="true" />
-                </summary>
-                <p>{f.a}</p>
-              </details>
+              <FaqItem key={f.q} {...f} />
             ))}
           </div>
           <p className="faq__more rv">
