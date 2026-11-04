@@ -1,66 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useFormSubmission } from "./useFormSubmission";
 import { ArrowRight } from "../icons";
 
-const ENDPOINT = "https://formsubmit.co/ajax/randeshdaluwatte@gmail.com";
-
-type Status = "idle" | "sending" | "error";
-
-/** Sends demo requests by email through FormSubmit. */
 export function DemoForm({ onDone }: { onDone: () => void }) {
-  const [status, setStatus] = useState<Status>("idle");
-
-  async function submit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    setStatus("sending");
-
-    try {
-      const res = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          name: data.get("name"),
-          email: data.get("email"),
-          organisation: data.get("organisation"),
-          message: data.get("message"),
-          _subject: "Settl demo request",
-          _template: "table",
-          _captcha: "false",
-        }),
-      });
-      const body = (await res.json().catch(() => null)) as { success?: string | boolean } | null;
-      if (!res.ok || String(body?.success) === "false") throw new Error("Request failed");
-      onDone();
-    } catch {
-      setStatus("error");
-    }
-  }
-
-  const sending = status === "sending";
+  const { submit, status, errorMessage, sending } = useFormSubmission("demo", onDone);
 
   return (
     <form className="mform" onSubmit={submit} aria-busy={sending}>
+      <input type="text" name="website" hidden tabIndex={-1} autoComplete="off" aria-hidden="true" />
       <label>
         Name
-        <input required type="text" name="name" autoComplete="name" />
+        <input required type="text" name="name" autoComplete="name" pattern=".*\S.*" maxLength={120} />
       </label>
       <label>
         Email
-        <input required type="email" name="email" autoComplete="email" />
+        <input required type="email" name="email" autoComplete="email" maxLength={254} />
       </label>
       <label>
         Organisation (optional)
-        <input type="text" name="organisation" autoComplete="organization" />
+        <input type="text" name="organisation" autoComplete="organization" maxLength={200} />
       </label>
       <label>
         Message (optional)
-        <textarea rows={3} name="message" />
+        <textarea rows={3} name="message" maxLength={5000} />
       </label>
       {status === "error" && (
         <p className="mform__error" role="alert">
-          Something went wrong sending your request. Please try again, or email us at{" "}
+          {errorMessage} You can also email{" "}
           <a href="mailto:randeshdaluwatte@gmail.com">randeshdaluwatte@gmail.com</a>.
         </p>
       )}

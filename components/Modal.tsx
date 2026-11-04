@@ -36,6 +36,7 @@ export function Modal() {
     if (!modal) return;
     const previous = document.activeElement as HTMLElement | null;
     const dialog = dialogRef.current;
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     dialog?.querySelector<HTMLElement>("input, select, textarea, button")?.focus();
 
@@ -61,10 +62,14 @@ export function Modal() {
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
       previous?.focus();
     };
   }, [modal, close]);
+
+  useEffect(() => {
+    if (submitted) dialogRef.current?.querySelector<HTMLElement>("#modal-title")?.focus();
+  }, [submitted]);
 
   if (!modal) return null;
 
@@ -90,7 +95,7 @@ export function Modal() {
             <div className="modal__tick">
               <Check size={32} color="#fff" weight={2.6} />
             </div>
-            <h2 id="modal-title" className="modal__title">
+            <h2 id="modal-title" className="modal__title" tabIndex={-1}>
               {done[modal].title}
             </h2>
             <p className="modal__donetext">{done[modal].text}</p>

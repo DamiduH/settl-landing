@@ -27,7 +27,7 @@ npm run dev
 
 Then open http://localhost:3000.
 
-Optionally copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SITE_URL` if you deploy under a different address.
+Copy `.env.example` to `.env.local` and follow [the Supabase setup guide](supabase/README.md) to enable form storage. `NEXT_PUBLIC_SITE_URL` is optional and only needs changing for a different site address.
 
 ## Scripts
 
@@ -38,6 +38,8 @@ Optionally copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SITE_URL` if
 | `npm start` | Serve the production build |
 | `npm run lint` | Run ESLint |
 | `npm run typecheck` | Run the TypeScript compiler without emitting files |
+| `npm run test:forms` | Check validation and API behavior with mocked Supabase requests |
+| `npm run test:security` | Run form and security regression checks |
 
 ## Project structure
 
@@ -63,16 +65,18 @@ public/
 
 ## Forms
 
-- **Waitlist**: front end only for now. It validates and shows a success state but does not send data anywhere.
-- **Book a demo**: posts to [FormSubmit](https://formsubmit.co) (`components/forms/DemoForm.tsx`). If you fork this project, change the endpoint to your own address so requests don't come to the Settl team.
+- **Waitlist and Book a demo**: both post to `/api/forms/[kind]`, which validates and stores submissions in Supabase. The browser never receives the database secret. Duplicate waitlist emails and retries of the same demo request do not create extra rows. Requests time out after 20 seconds and failures can be retried.
+- Follow [the Supabase setup guide](supabase/README.md) to apply the migration and configure the server environment. Forms return an error until Supabase is configured. Submissions are visible in the Supabase dashboard; email notifications are not configured.
 
 ## Accessibility and motion
+
+See [the security checklist](SECURITY.md) for protections, verification results, and remaining deployment/account actions.
 
 All animation respects `prefers-reduced-motion`. Interactive elements have visible focus styles and 44px or larger tap targets. Please keep it that way in contributions.
 
 ## Deployment
 
-The site deploys to Vercel. Every push to `main` creates a production deployment, and pull requests get preview deployments. No environment variables are required; `NEXT_PUBLIC_SITE_URL` only changes the canonical URL used in metadata, the sitemap and robots.txt.
+The site deploys to Vercel. Every push to `main` creates a production deployment, and pull requests get preview deployments. Form submissions require `SUPABASE_URL` and `SUPABASE_SECRET_KEY` in the server environment; see `.env.example` and the Supabase guide above. `NEXT_PUBLIC_SITE_URL` changes the canonical URL used in metadata, the sitemap and robots.txt.
 
 ## Contributing
 
