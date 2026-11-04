@@ -1,7 +1,6 @@
 import { DemoButton, WaitlistButton } from "../CtaButtons";
 import { HeroStage } from "../HeroStage";
 import { Header } from "./Header";
-import { MacWindow } from "./MacWindow";
 import { PlatformStrip } from "./PlatformStrip";
 
 export function Hero() {
@@ -29,7 +28,6 @@ export function Hero() {
       </div>
 
       <PlatformStrip />
-      <MacWindow />
     </HeroStage>
   );
 }

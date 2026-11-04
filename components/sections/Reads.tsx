@@ -8,6 +8,7 @@ const spark: Record<string, number[]> = {
   Payoneer: [40, 46, 62, 58, 72, 80],
   Fiverr: [30, 44, 38, 50, 62, 58],
   Upwork: [60, 54, 70, 66, 78, 84],
+  Wise: [34, 48, 44, 58, 54, 68],
 };
 
 const bills = [
@@ -31,6 +32,9 @@ function Icon({ d, size = 18 }: { d: string; size?: number }) {
     </svg>
   );
 }
+
+const onTime = bills.reduce((n, b) => n + MONTHS - b.late.length, 0);
+const total = bills.length * MONTHS;
 
 export function Reads() {
   return (
@@ -76,10 +80,6 @@ export function Reads() {
             </ul>
           </div>
 
-          <div className="flow__plus" aria-hidden="true">
-            +
-          </div>
-
           <div className="flow__card rv">
             <div className="flow__head">
               <span className="flow__icon">
@@ -106,35 +106,51 @@ export function Reads() {
                 </li>
               ))}
             </ul>
+            <div className="flow__total">
+              <span className="flow__totalnum">
+                {onTime}/{total}
+              </span>
+              payments on time
+            </div>
           </div>
         </div>
 
-        <div className="flow__link" aria-hidden="true">
-          <svg className="flow__wide" viewBox="0 0 120 400" preserveAspectRatio="none">
-            <path className="flow" d="M0 100 C 60 100 60 200 116 200 M0 300 C 60 300 60 200 116 200" fill="none" stroke="#3976D2" strokeWidth="2" vectorEffect="non-scaling-stroke" />
-          </svg>
-          <svg className="flow__narrow" width="24" height="40" viewBox="0 0 24 40">
-            <path className="flow" d="M12 0 V 34" fill="none" stroke="#3976D2" strokeWidth="2" />
-            <path d="M5 28l7 8 7-8" fill="none" stroke="#3976D2" strokeWidth="2" />
-          </svg>
-        </div>
+        {/* Both inputs flow down into the score */}
+        <svg className="flow__merge flow__merge--wide" viewBox="0 0 1000 96" preserveAspectRatio="none" aria-hidden="true">
+          <path
+            className="flow"
+            d="M250 0 C 250 56 500 40 500 92 M750 0 C 750 56 500 40 500 92"
+            fill="none"
+            stroke="#3976D2"
+            strokeWidth="2"
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
+        <svg className="flow__merge flow__merge--narrow" width="24" height="44" viewBox="0 0 24 44" aria-hidden="true">
+          <path className="flow" d="M12 0 V 38" fill="none" stroke="#3976D2" strokeWidth="2" />
+          <path d="M5 32l7 8 7-8" fill="none" stroke="#3976D2" strokeWidth="2" />
+        </svg>
 
         <div className="flow__score live rv">
-          <div className="flow__scorelabel">Your Settl Score</div>
-          <div className="flow__scorerow">
-            <span className="flow__number">829</span>
-            <span className="flow__pill">Excellent</span>
+          <div className="flow__scoremain">
+            <div className="flow__scorelabel">Your Settl Score</div>
+            <div className="flow__scorerow">
+              <span className="flow__number">829</span>
+              <span className="flow__pill">Excellent</span>
+            </div>
           </div>
-          <div className="flow__meter" aria-hidden="true">
-            {Array.from({ length: BARS }, (_, i) => (
-              <span key={i} className={i < FILLED ? "on" : undefined} />
-            ))}
+          <div className="flow__scoreside">
+            <div className="flow__meter" aria-hidden="true">
+              {Array.from({ length: BARS }, (_, i) => (
+                <span key={i} className={i < FILLED ? "on" : undefined} />
+              ))}
+            </div>
+            <div className="flow__range" aria-hidden="true">
+              <span>350</span>
+              <span>850</span>
+            </div>
+            <p className="flow__caption">Ready to share with any lender you choose.</p>
           </div>
-          <div className="flow__range" aria-hidden="true">
-            <span>350</span>
-            <span>850</span>
-          </div>
-          <p className="flow__caption">Ready to share with any lender you choose.</p>
         </div>
       </div>
     </section>

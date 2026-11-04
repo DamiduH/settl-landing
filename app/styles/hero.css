@@ -349,11 +349,8 @@
 .marquee__track {
   display: flex;
   width: max-content;
-  animation: marquee 36s linear infinite;
+  animation: marquee 60s linear infinite;
   will-change: transform;
-}
-.marquee:hover .marquee__track {
-  animation-play-state: paused;
 }
 .marquee__set {
   display: flex;

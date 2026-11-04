@@ -45,7 +45,6 @@
     width: 100%;
     justify-content: space-between;
   }
-  .herotext__ctas .btn2,
   .closing__ctas .btn2,
   .btn2.band__cta {
     width: 100%;
@@ -99,6 +98,39 @@
   }
   .herotext__ctas {
     margin-top: 28px;
+    align-items: center;
+    gap: 6px;
+  }
+  /* Label centred in the pill, arrow chip pinned right */
+  .herotext__ctas .btn.btn--lg {
+    justify-content: center;
+    position: relative;
+    padding: 6px 56px;
+  }
+  .herotext__ctas .btn.btn--lg .ar {
+    position: absolute;
+    right: 6px;
+  }
+  /* "Book a demo" becomes a quiet text link under the main button */
+  .herotext__ctas .btn2.herotext__demo {
+    width: auto;
+    min-height: 44px;
+    padding: 0 12px;
+    gap: 8px;
+    border: 0;
+    background: none;
+    color: var(--brand);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+  }
+  .herotext__ctas .btn2.herotext__demo:hover {
+    transform: none;
+  }
+  .herotext__ctas .btn2.herotext__demo .pi {
+    display: none;
   }
   .platforms {
     margin-top: 40px;
@@ -128,26 +160,12 @@
     width: 52px;
     height: 52px;
   }
-  .macwrap {
-    margin-top: 24px;
+  /* Product reveal: phone mock below the hero */
+  .reveal {
+    padding-bottom: 56px;
   }
-  .mac {
-    border-radius: var(--m-radius);
-    box-shadow: 0 40px 80px -36px rgba(6, 38, 86, 0.45), 0 0 0 5px rgba(255, 255, 255, 0.55);
-  }
-  .mac__bar {
-    padding: 10px 14px;
-    gap: 6px;
-  }
-  .mac__light {
-    width: 9px;
-    height: 9px;
-  }
-  /* The full dashboard is unreadable at phone width, so frame the score up close */
-  .mac__shot {
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    object-position: 6% 70%;
+  .reveal__title {
+    font-size: 32px;
   }
 
   /* Shared card shape */
@@ -233,9 +251,6 @@
   }
   .frow__streak i {
     height: 6px;
-  }
-  .flow__link {
-    padding: 10px 0;
   }
   .flow__score {
     padding: 24px var(--m-pad);

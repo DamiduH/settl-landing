@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { platforms } from "../platforms";
 
-/** Four passes per set so the loop stays full on wide screens. */
-const PASSES = 4;
+/** Three passes per set so the loop stays full on wide screens. */
+const PASSES = 3;
 
 function Logos({ hidden = false }: { hidden?: boolean }) {
   return (

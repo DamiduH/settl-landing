@@ -91,7 +91,9 @@ button {
 
 .page {
   position: relative;
+  /* clip, not hidden: hidden would create a scroll container and break position: sticky */
   overflow: hidden;
+  overflow: clip;
 }
 
 .container {

@@ -1,0 +1,269 @@
+/*
+ * Product reveal. ProductReveal writes --e (0 → 1, eased) as the section
+ * scrolls; every transform below is a function of it, so the motion is
+ * scrubbed by the scrollbar and holds still when scrolling stops.
+ */
+.reveal {
+  --e: 1;
+  position: relative;
+  height: 230vh;
+}
+.reveal__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(28px, 4vh, 48px);
+  padding: 24px var(--gutter);
+}
+.reveal__title {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(30px, 3.8vw, 52px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+  opacity: clamp(0, calc(var(--e) * 2.2 - 0.3), 1);
+  transform: translateY(calc((1 - var(--e)) * 40px));
+}
+.reveal__title .grad {
+  padding-bottom: 0.08em;
+}
+
+/* Window: starts small and tipped back into the page, then rises flat */
+.reveal__mac {
+  width: min(1080px, 100%, calc((100svh - 220px) * 2.15));
+}
+.reveal .macwrap {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+.reveal .mac {
+  opacity: calc(0.35 + var(--e) * 0.65);
+  animation: none;
+  transform-origin: 50% 100%;
+  transform: perspective(1600px) translateY(calc((1 - var(--e)) * 70px))
+    rotateX(calc((1 - var(--e)) * 38deg)) scale(calc(0.72 + var(--e) * 0.28));
+  will-change: transform;
+}
+.reveal .macwrap::before {
+  opacity: var(--e);
+}
+/* Floating notes slide in only once the window has settled */
+.reveal .float__card {
+  animation: none;
+  opacity: clamp(0, calc((var(--e) - 0.82) * 6), 1);
+  transform: translateY(calc((1 - var(--e)) * 120px));
+}
+.reveal .float {
+  animation-play-state: paused;
+}
+
+/* Phone mock (phones only) */
+.reveal__phone {
+  display: none;
+}
+.phone {
+  width: min(300px, 82vw);
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 48px;
+  background: linear-gradient(160deg, #1b2a4f, #0b1636);
+  box-shadow: 0 50px 90px -40px rgba(6, 38, 86, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 0 0 6px rgba(255, 255, 255, 0.6);
+}
+.phone__screen {
+  border-radius: 38px;
+  overflow: hidden;
+  background: var(--bg);
+  padding-bottom: 16px;
+}
+.phone__status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 22px 6px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.phone__island {
+  width: 78px;
+  height: 22px;
+  border-radius: 999px;
+  background: #0b1636;
+}
+.phone__icons {
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+}
+.phone__icons i {
+  width: 4px;
+  border-radius: 1px;
+  background: var(--ink);
+}
+.phone__icons i:nth-child(1) { height: 5px; }
+.phone__icons i:nth-child(2) { height: 8px; }
+.phone__icons i:nth-child(3) { height: 11px; }
+.phone__app {
+  padding: 8px 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.phone__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.phone__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--pale);
+  color: var(--brand);
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.phone__title {
+  margin-top: 2px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.phone__score {
+  border-radius: 20px;
+  padding: 16px;
+  color: #fff;
+  background: linear-gradient(140deg, #3976d2, #004fc5 55%, #062656);
+  box-shadow: 0 18px 30px -18px rgba(0, 79, 188, 0.8);
+}
+.phone__label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pale);
+}
+.phone__scorerow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 4px;
+}
+.phone__number {
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+.phone__grade {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--mist);
+}
+.phone__meter {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 3px;
+  height: 16px;
+}
+.phone__meter span {
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.25);
+}
+.phone__meter span.on {
+  background: #fff;
+}
+.phone__range {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--sky);
+}
+.phone__card {
+  border-radius: 16px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+.phone__id {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.phone__small {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.phone__code {
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+.phone__copy {
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--brand);
+}
+.phone__cardhead {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 800;
+}
+.phone__up {
+  color: #1f9d55;
+}
+.phone__bars {
+  margin-top: 10px;
+  height: 54px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  align-items: end;
+}
+.phone__bars i {
+  border-radius: 5px 5px 2px 2px;
+  background: linear-gradient(180deg, #3976d2, #004fc5);
+}
+
+/* Below tablet: no pinning; the phone stands in for the desktop window */
+@media (max-width: 767px) {
+  .reveal {
+    height: auto;
+  }
+  .reveal__sticky {
+    position: static;
+    height: auto;
+    padding: 0 var(--gutter);
+    gap: 28px;
+  }
+  .reveal__title {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal__mac {
+    display: none;
+  }
+  .reveal__phone {
+    display: block;
+  }
+}

@@ -11,4 +11,5 @@ export const platforms: Platform[] = [
   { name: "Payoneer", logo: "/logos/payoneer.svg", color: "#FF4800" },
   { name: "Fiverr", logo: "/logos/fiverr.svg", color: "#1DBF73", wordmark: true },
   { name: "Upwork", logo: "/logos/upwork.svg", color: "#14A800" },
+  { name: "Wise", logo: "/logos/wise.svg", color: "#163300" },
 ];
