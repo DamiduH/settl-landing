@@ -1,12 +1,16 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image, { type StaticImageData } from "next/image";
+import ideasprintPhoto from "@/public/images/Ideasprint.jpeg";
+import codefestPhoto from "@/public/images/codefest.png";
+import hackxPhoto from "@/public/images/hackX.png";
 import { ArrowLeft, ArrowRight } from "../icons";
 
-const awards = [
-  { tag: "Ideasprint 2026", title: "1st runners-up", line: "Where Settl was first pitched." },
-  { tag: "SLIIT Codefest", title: "Finalist", line: "[One line about Codefest]" },
-  { tag: "Intelicon 2026", title: "Finalist", line: "[One line about Intelicon]" },
+const awards: { tag: string; title: string; line: string; photo?: StaticImageData }[] = [
+  { tag: "Ideasprint 2026", title: "1st runners-up", line: "Where Settl was first pitched.", photo: ideasprintPhoto },
+  { tag: "SLIIT Codefest", title: "Finalist", line: "Finalist at Cisco Technopreneur challenge", photo: codefestPhoto },
+  { tag: "hackX 11.0", title: "Finalist", line: "Finalists at Sri Lanka's biggest hackathon.", photo: hackxPhoto },
 ];
 
 const INTERVAL = 6000;
@@ -82,11 +86,21 @@ export function Recognition() {
               aria-label={`${i + 1} of ${awards.length}`}
               aria-hidden={i !== slide}
             >
-              <div className="ph awph">[Event photo]</div>
+              <div className="ph awph">
+                {a.photo ? (
+                  <Image
+                    src={a.photo}
+                    alt={`The Settl team at ${a.tag}`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 900px) 90vw, 580px"
+                    placeholder="blur"
+                    className="awph__image"
+                  />
+                ) : "[Event photo]"}
+              </div>
               <div className="awtext">
                 <div className="awtext__meta">
                   <span className="awtext__title">{a.title}</span>
-                  <span className="awtext__date">[Date]</span>
                 </div>
                 <h3 className="awtext__tag">{a.tag}</h3>
                 <p className="awtext__line">{a.line}</p>
