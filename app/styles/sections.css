@@ -1,4 +1,32 @@
 /* Recognition slideshow */
+@media (min-width: 768px) {
+  .recog {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    column-gap: 24px;
+  }
+  .recog .recog__head {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .recog .recog__nav {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0;
+    margin-bottom: 36px;
+    justify-content: flex-end;
+  }
+  .recog .recog__frame {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .recog .recog__dots {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+}
+
 .recog {
   width: 100%;
   min-width: 0;
