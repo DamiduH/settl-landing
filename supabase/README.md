@@ -8,6 +8,10 @@
 
 ## Stored data and behavior
 
+Before deploying optional early-access contact consent, run [the optional consent migration](migrations/202611040003_optional_contact_consent.sql). Unchecked submissions store `consent = false` and no consent timestamp; checked submissions retain a consent timestamp.
+
+Before deploying the conditional “Other” fields, also run [the Other details migration](migrations/202611040002_waitlist_other_details.sql) in SQL Editor (or apply it with the Supabase CLI). It adds `work_other` and `paid_other` to `waitlist_signups`. These answers are required when the corresponding Other choice is selected.
+
 - Waitlist: name, lowercase email, canonical WhatsApp number (`+94` followed by nine digits), work type, payment platforms, consent and timestamps. One signup per email. Repeating an email succeeds without overwriting the original details or revealing membership.
 - Demos: name, email, optional organisation and message, timestamps. Each form opening generates a request ID on first submission; retrying it does not create another request. Opening a fresh form allows a new request.
 - Row Level Security is enabled. Anonymous visitors and signed-in users have no table access. The Next.js endpoints use a server secret. View and export submissions through the Supabase dashboard; no visitor account is needed.

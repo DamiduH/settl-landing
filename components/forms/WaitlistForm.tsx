@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { ArrowRight } from "../icons";
 import { useFormSubmission } from "./useFormSubmission";
 
@@ -7,6 +8,8 @@ const workTypes = ["Development", "Design", "Writing and content", "Marketing", 
 const paidVia = ["PayPal", "Payoneer", "Fiverr", "Upwork", "Other"];
 
 export function WaitlistForm({ onDone }: { onDone: () => void }) {
+  const [otherWork, setOtherWork] = useState(false);
+  const [otherPaid, setOtherPaid] = useState(false);
   const { submit, status, errorMessage, sending } = useFormSubmission("waitlist", onDone);
   return (
     <form
@@ -72,25 +75,37 @@ export function WaitlistForm({ onDone }: { onDone: () => void }) {
       </label>
       <label>
         Type of work
-        <select required name="work" defaultValue="">
+        <select required name="work" defaultValue="" onChange={(event) => setOtherWork(event.target.value === "Other")}>
           <option value="">Choose one</option>
           {workTypes.map((w) => (
             <option key={w}>{w}</option>
           ))}
         </select>
       </label>
+      {otherWork && (
+        <label>
+          What type of work do you do?
+          <input required type="text" name="work_other" maxLength={200} pattern=".*\S.*" />
+        </label>
+      )}
       <fieldset className="mform__set">
         <legend>Where you get paid</legend>
         <div className="mform__checks">
           {paidVia.map((p) => (
             <label className="chk" key={p}>
-              <input type="checkbox" name="paid" value={p} /> {p}
+              <input type="checkbox" name="paid" value={p} onChange={p === "Other" ? (event) => setOtherPaid(event.target.checked) : undefined} /> {p}
             </label>
           ))}
         </div>
       </fieldset>
+      {otherPaid && (
+        <label>
+          Where else do you get paid?
+          <input required type="text" name="paid_other" maxLength={200} pattern=".*\S.*" />
+        </label>
+      )}
       <label className="chk">
-        <input required type="checkbox" name="consent" /> Settl can contact me about early access.
+        <input type="checkbox" name="consent" /> Settl can contact me about early access (optional).
       </label>
       {status === "error" && (
         <p className="mform__error" role="alert">

@@ -49,6 +49,9 @@ export async function handleSubmission(request: Request, kind: FormKind) {
   if (!key.startsWith("sb_secret_")) headers.Authorization = `Bearer ${key}`;
   const base = `${url.replace(/\/$/, "")}/rest/v1`;
   try {
+    // Local testing (including phones on the LAN) must not share a production quota.
+    const localDevelopment = process.env.NODE_ENV === "development" && !process.env.VERCEL;
+    if (!localDevelopment) {
     // Vercel supplies this header. Never trust arbitrary X-Forwarded-For values.
     const ip = process.env.VERCEL ? request.headers.get("x-vercel-forwarded-for")?.split(",")[0]?.trim() : null;
     const clientHash = createHmac("sha256", key).update(ip || "local-development").digest("hex");
@@ -60,6 +63,7 @@ export async function handleSubmission(request: Request, kind: FormKind) {
     const allowed = await limit.json();
     if (allowed === false) return new Response(JSON.stringify({ error: "Too many requests. Please try again in 10 minutes." }), { status: 429, headers: { "Content-Type": "application/json", "Retry-After": "600", "Cache-Control": "no-store" } });
     if (allowed !== true) throw new Error("invalid_rate_limit_response");
+    }
 
     const table = kind === "waitlist" ? "waitlist_signups" : "demo_requests";
     const conflict = kind === "waitlist" ? "email" : "request_id";

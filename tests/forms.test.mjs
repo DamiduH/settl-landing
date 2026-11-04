@@ -47,6 +47,21 @@ test("waitlist normalizes contact fields and preserves all selected platforms", 
   assert.deepEqual(validateSubmission("waitlist", { ...waitlist, paid: undefined }).payment_platforms, []);
 });
 
+test("Other choices require details and preserve trimmed answers", () => {
+  const other = { ...waitlist, work: "Other", paid: ["PayPal", "Other"], work_other: " Teaching ", paid_other: " Bank transfer " };
+  const row = validateSubmission("waitlist", other);
+  assert.equal(row.work_other, "Teaching");
+  assert.equal(row.paid_other, "Bank transfer");
+  for (const field of ["work_other", "paid_other"]) {
+    for (const invalid of [undefined, "", "   ", "x".repeat(201), []]) {
+      assert.throws(() => validateSubmission("waitlist", { ...other, [field]: invalid }));
+    }
+  }
+  const regular = validateSubmission("waitlist", { ...waitlist, work_other: "Stale answer", paid_other: "Stale answer" });
+  assert.equal(regular.work_other, undefined);
+  assert.equal(regular.paid_other, undefined);
+});
+
 test("WhatsApp requires +94 and exactly nine following digits", () => {
   for (const whatsapp of ["+94 771234567", "+94771234567"]) assert.doesNotThrow(() => validateSubmission("waitlist", { ...waitlist, whatsapp }));
   for (const whatsapp of ["+94", "+94 77123456", "+94 7712345678", "+94 77abc4567", "0771234567", "+91 771234567", "+94         "]) {
@@ -54,8 +69,22 @@ test("WhatsApp requires +94 and exactly nine following digits", () => {
   }
 });
 
-test("validation rejects absent consent, invalid choices, whitespace names, bad email and wrong types", () => {
-  for (const patch of [{ consent: false }, { work: "Hacked" }, { paid: ["Unknown"] }, { paid: "PayPal" }, { name: "   " }, { email: "invalid" }, { name: {} }, { request_id: "bad" }]) {
+test("contact preference is optional and never records unchecked consent", () => {
+  for (const consent of [undefined, false]) {
+    const row = validateSubmission("waitlist", { ...waitlist, consent });
+    assert.equal(row.consent, false);
+    assert.equal(row.consent_at, null);
+  }
+  for (const consent of [true, "on"]) {
+    assert.equal(validateSubmission("waitlist", { ...waitlist, consent }).consent, true);
+  }
+  for (const consent of ["yes", "false", [], {}]) {
+    assert.throws(() => validateSubmission("waitlist", { ...waitlist, consent }));
+  }
+});
+
+test("validation rejects invalid choices, whitespace names, bad email and wrong types", () => {
+  for (const patch of [{ work: "Hacked" }, { paid: ["Unknown"] }, { paid: "PayPal" }, { name: "   " }, { email: "invalid" }, { name: {} }, { request_id: "bad" }]) {
     assert.throws(() => validateSubmission("waitlist", { ...waitlist, ...patch }));
   }
   assert.throws(() => validateSubmission("demo", { ...demo, message: "x".repeat(5001) }));
@@ -113,6 +142,28 @@ test("demo retries use the same request ID as conflict key", async () => {
   };
   for (let i = 0; i < 2; i++) assert.equal((await handleSubmission(request(demo), "demo")).status, 200);
   assert.equal(inserts, 2); // Database ON CONFLICT, rather than process memory, suppresses duplicates.
+});
+
+test("local development submissions bypass the shared limiter but still save", async () => {
+  configure();
+  const previousNodeEnv = process.env.NODE_ENV;
+  delete process.env.VERCEL;
+  process.env.NODE_ENV = "development";
+  try {
+    let inserts = 0;
+    globalThis.fetch = async (url) => {
+      assert.ok(!url.includes("/rpc/"));
+      inserts++;
+      return new Response(null, { status: 201 });
+    };
+    for (let i = 0; i < 6; i++) {
+      assert.equal((await handleSubmission(request(waitlist), "waitlist")).status, 200);
+    }
+    assert.equal(inserts, 6);
+  } finally {
+    if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
+    else process.env.NODE_ENV = previousNodeEnv;
+  }
 });
 
 test("rate-limited requests return retry guidance without inserting", async () => {

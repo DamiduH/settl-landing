@@ -29,10 +29,16 @@ export function validateSubmission(kind: FormKind, value: unknown): Record<strin
   if (!/^\+94 ?[0-9]{9}$/.test(whatsapp)) throw new Error("Enter exactly 9 digits after +94.");
   const work = text("work", 50);
   if (!workTypes.includes(work)) throw new Error("Choose a type of work.");
-  if (input.consent !== true && input.consent !== "on") throw new Error("Please agree to be contacted about early access.");
+  if (input.consent !== undefined && input.consent !== false && input.consent !== true && input.consent !== "on") {
+    throw new Error("Invalid contact preference.");
+  }
+  const consent = input.consent === true || input.consent === "on";
   const paid = input.paid ?? [];
   if (!Array.isArray(paid) || paid.length > paymentPlatforms.length || paid.some((item) => typeof item !== "string" || !paymentPlatforms.includes(item))) {
     throw new Error("Choose valid payment platforms.");
   }
-  return { name, email, request_id: requestId, whatsapp: whatsapp.replace(/ /g, ""), work_type: work, payment_platforms: [...new Set(paid)], consent: true };
+  const otherDetails: Record<string, string> = {};
+  if (work === "Other") otherDetails.work_other = text("work_other", 200);
+  if (paid.includes("Other")) otherDetails.paid_other = text("paid_other", 200);
+  return { name, email, request_id: requestId, whatsapp: whatsapp.replace(/ /g, ""), work_type: work, payment_platforms: [...new Set(paid)], consent, ...(!consent ? { consent_at: null } : {}), ...otherDetails };
 }
